@@ -16,6 +16,20 @@
         <link href="css/bootstrap-icons.css" rel="stylesheet">
         <link href="css/template-sosbi.css" rel="stylesheet">
         <link href="css/coordinaciones.css" rel="stylesheet">
+
+        <style>
+            /* =========================================
+               CORRECCIÓN DE ESPACIOS PARA CELULARES (OLA)
+               ========================================= */
+            @media (max-width: 991px) {
+                .hero-com {
+                    height: auto !important;
+                    min-height: 100vh !important;
+                    padding-top: 140px !important; 
+                    padding-bottom: 120px !important; /* Colchón para la ola */
+                }
+            }
+        </style>
     </head>
     
     <body class="page-com">
@@ -36,10 +50,10 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle active" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Coordinaciones</a>
                                 <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="recursos-humanos.html">Recursos Humanos</a></li>
-                                    <li><a class="dropdown-item" href="relaciones-publicas.html">Relaciones Públicas</a></li>
-                                    <li><a class="dropdown-item active" href="comunicacion-diseno.html">Comunicación y Diseño</a></li>
-                                    <li><a class="dropdown-item" href="proyectos-coord.html">Proyectos</a></li>
+                                    <li><a class="dropdown-item item-rh" href="recursos-humanos.html">Recursos Humanos</a></li>
+                                    <li><a class="dropdown-item item-rrpp" href="relaciones-publicas.html">Relaciones Públicas</a></li>
+                                    <li><a class="dropdown-item item-com active" href="comunicacion-diseno.html">Comunicación y Diseño</a></li>
+                                    <li><a class="dropdown-item item-proy" href="proyectos-coord.html">Proyectos</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="eventos.html">Próximos Eventos</a></li>
@@ -61,7 +75,7 @@
                     </div>
                 </div>
                 
-                <svg viewBox="0 0 1962 178" xmlns="http://www.w3.org/2000/svg" style="position: absolute; bottom: -1px; left: 0; width: 100%; z-index: 1; transform: rotate(180deg); pointer-events: none;">
+                <svg viewBox="0 0 1962 178" xmlns="http://www.w3.org/2000/svg" style="position: absolute; bottom: -1px; left: 0; width: 100%; z-index: 1; transform: rotate(180deg); pointer-events: none; display: block;">
                     <path fill="#ffffff" d="M 0 114 C 118.5 114 118.5 167 237 167 L 237 167 L 237 0 L 0 0 Z"></path> 
                     <path fill="#ffffff" d="M 236 167 C 373 167 373 128 510 128 L 510 128 L 510 0 L 236 0 Z"></path> 
                     <path fill="#ffffff" d="M 509 128 C 607 128 607 153 705 153 L 705 153 L 705 0 L 509 0 Z"></path>
@@ -85,7 +99,7 @@
                         </div>
                         
                         <div class="col-lg-5 col-12 text-center reveal reveal-left delay-1">
-                            <img src="images/logo-com.webp" class="img-fluid" alt="Logo Comunicación y Diseño SOSBI" style="max-width: 80%; filter: drop-shadow(0 15px 25px rgba(107, 195, 178, 0.2));">
+                            <img src="images/com.webp" class="img-fluid" alt="Logo Comunicación y Diseño SOSBI" style="max-width: 80%; filter: drop-shadow(0 15px 25px rgba(107, 195, 178, 0.2));">
                         </div>
                     </div>
                 </div>
@@ -97,9 +111,9 @@
                         <div class="col-lg-6 col-md-8 col-12 text-center reveal reveal-up">
                             <div class="coordinator-card bg-white pb-4">
                                 <div class="coordinator-header header-com">
-                                    <h4 class="text-white mb-0" style="padding-bottom: 40px;">Liderazgo Comunicación</h4>
+                                    <h4 class="text-white mb-0">Liderazgo Comunicación</h4>
                                 </div>
-                                <img src="images/members/foto-placeholder.webp" alt="Natalia Villa" class="coordinator-img">
+                                <img src="images/members/Natalia Alejandra Villa Vega.webp" alt="Natalia Alejandra Villa Vega" class="coordinator-img">
                                 <div class="px-4 pt-4">
                                     <h4 class="fw-bold" style="color: var(--main-azul-marino);">Natalia Alejandra Villa Vega</h4>
                                     <p class="fs-6 text-com fw-bold mb-3">Coordinadora de Comunicación y Diseño</p>
@@ -137,7 +151,7 @@
                                     <div class="col-lg-6 col-md-6 col-12">
                                         <div class="activity-item item-com">
                                             <div class="activity-img">
-                                                <img src="images/foto-placeholder.jpg" class="img-fluid w-100" alt="Identidad Visual y Branding">
+                                                <img src="images/Identidad Visual y Branding.webp" class="img-fluid w-100" alt="Identidad Visual y Branding">
                                             </div>
                                             <div class="activity-badge">
                                                 <i class="bi bi-palette-fill"></i>
@@ -151,7 +165,7 @@
                                     <div class="col-lg-6 col-md-6 col-12">
                                         <div class="activity-item item-com">
                                             <div class="activity-img">
-                                                <img src="images/foto-placeholder.jpg" class="img-fluid w-100" alt="Gestión de Redes Sociales">
+                                                <img src="images/Gestión de Redes Sociales.webp" class="img-fluid w-100" alt="Gestión de Redes Sociales">
                                             </div>
                                             <div class="activity-badge">
                                                 <i class="bi bi-megaphone-fill"></i>
@@ -170,7 +184,7 @@
                                     <div class="col-lg-6 col-md-6 col-12">
                                         <div class="activity-item item-com">
                                             <div class="activity-img">
-                                                <img src="images/foto-placeholder.jpg" class="img-fluid w-100" alt="Contenido Multimedia">
+                                                <img src="images/Contenido Multimedia.webp" class="img-fluid w-100" alt="Contenido Multimedia">
                                             </div>
                                             <div class="activity-badge">
                                                 <i class="bi bi-camera-video-fill"></i>
@@ -184,7 +198,7 @@
                                     <div class="col-lg-6 col-md-6 col-12">
                                         <div class="activity-item item-com">
                                             <div class="activity-img">
-                                                <img src="images/foto-placeholder.jpg" class="img-fluid w-100" alt="Difusión Científica">
+                                                <img src="images/Difusión Científica.webp" class="img-fluid w-100" alt="Difusión Científica">
                                             </div>
                                             <div class="activity-badge">
                                                 <i class="bi bi-globe2"></i>

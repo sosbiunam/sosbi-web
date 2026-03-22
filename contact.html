@@ -184,7 +184,7 @@
                             <div class="contact-form-card">
                                 <h3 class="mb-4 text-center" style="color: var(--main-azul-marino);">Envíanos un Mensaje</h3>
                                 
-                                <form action="https://formsubmit.co/sosbi.unam@gmail.com" method="POST">
+                                <form id="contact-form" action="https://formsubmit.co/sosbi.unam@gmail.com" method="POST">
                                     
                                     <input type="hidden" name="_captcha" value="false">
                                     <input type="hidden" name="_subject" value="¡Nuevo mensaje desde la página web de SOSBI!">
@@ -216,11 +216,13 @@
                                         <textarea name="Mensaje" class="form-control" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
                                     </div>
                                     
-                                    <button type="submit" class="btn custom-btn w-100 py-3" style="background-color: var(--main-azul-marino); color: white; font-weight: bold; border-radius: 10px; font-size: 1.1rem;">
+                                    <button type="submit" id="submit-btn" class="btn custom-btn w-100 py-3" style="background-color: var(--main-azul-marino); color: white; font-weight: bold; border-radius: 10px; font-size: 1.1rem;">
                                         Enviar Mensaje <i class="bi bi-send ms-2"></i>
                                     </button>
+
+                                    <div id="form-message" class="mt-3 text-center" style="display: none; border-radius: 10px; padding: 15px; font-weight: bold;"></div>
                                 </form>
-                                </div>
+                            </div>
                         </div>
 
                     </div>
@@ -315,6 +317,56 @@
                     // Si seleccionan "Duda General" no mandamos copia, solo llega a sosbi.unam@gmail.com
                     ccField.setAttribute('disabled', 'true');
                 }
+            });
+        </script>
+
+        <script>
+            document.getElementById('contact-form').addEventListener('submit', function(e) {
+                e.preventDefault(); // Evita que salte a la página de FormSubmit
+
+                var form = this;
+                var btn = document.getElementById('submit-btn');
+                var messageBox = document.getElementById('form-message');
+                var originalBtnText = btn.innerHTML;
+
+                // Cambiamos el botón a estado "Enviando..."
+                btn.innerHTML = 'Enviando... <i class="spinner-border spinner-border-sm ms-2" role="status" aria-hidden="true"></i>';
+                btn.disabled = true;
+                messageBox.style.display = 'none';
+
+                // Enviamos los datos en silencio mediante Fetch API
+                fetch(form.action, {
+                    method: form.method,
+                    body: new FormData(form),
+                    headers: {
+                        'Accept': 'application/json' // FormSubmit responde en JSON y no redirecciona
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        // ÉXITO
+                        messageBox.innerHTML = '¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.';
+                        messageBox.style.backgroundColor = '#d4edda';
+                        messageBox.style.color = '#155724';
+                        messageBox.style.display = 'block';
+                        form.reset(); // Limpia los campos
+                    } else {
+                        // ERROR DE FORMSUBMIT
+                        messageBox.innerHTML = 'Oops! Hubo un problema al enviar tu mensaje. Intenta de nuevo.';
+                        messageBox.style.backgroundColor = '#f8d7da';
+                        messageBox.style.color = '#721c24';
+                        messageBox.style.display = 'block';
+                    }
+                }).catch(error => {
+                    // ERROR DE RED
+                    messageBox.innerHTML = 'Error de conexión. Por favor revisa tu internet y vuelve a intentar.';
+                    messageBox.style.backgroundColor = '#f8d7da';
+                    messageBox.style.color = '#721c24';
+                    messageBox.style.display = 'block';
+                }).finally(() => {
+                    // Restauramos el botón
+                    btn.innerHTML = originalBtnText;
+                    btn.disabled = false;
+                });
             });
         </script>
 

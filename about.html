@@ -17,6 +17,7 @@
         <link href="css/bootstrap-icons.css" rel="stylesheet">
         
         <link href="css/template-sosbi.css" rel="stylesheet">
+        <link href="css/coordinaciones.css" rel="stylesheet">
         
         <style>
             /* =========================================
@@ -115,7 +116,7 @@
             /* Colores de Jerarquía para las tarjetas de la Mesa Directiva */
             .leadership-card { border-top: 5px solid var(--main-dorado); }
             .leadership-card-rh { border-top: 5px solid #E10000; } /* Rojo - RH */
-            .leadership-card-proy { border-top: 5px solid #AF50E5; } /* Morado - PROY (Actualizado) */
+            .leadership-card-proy { border-top: 5px solid #AF50E5; } /* Morado - PROY */
             .leadership-card-com { border-top: 5px solid #6BC3B2; } /* Menta - COM */
             .leadership-card-rrpp { border-top: 5px solid #FF8A66; } /* Naranja - RRPP */
         </style>
@@ -145,10 +146,10 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Coordinaciones</a>
                                 <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="recursos-humanos.html">Recursos Humanos</a></li>
-                                    <li><a class="dropdown-item" href="relaciones-publicas.html">Relaciones Públicas</a></li>
-                                    <li><a class="dropdown-item" href="comunicacion-diseno.html">Comunicación y Diseño</a></li>
-                                    <li><a class="dropdown-item" href="proyectos-coord.html">Proyectos</a></li>
+                                    <li><a class="dropdown-item item-rh" href="recursos-humanos.html">Recursos Humanos</a></li>
+                                    <li><a class="dropdown-item item-rrpp" href="relaciones-publicas.html">Relaciones Públicas</a></li>
+                                    <li><a class="dropdown-item item-com" href="comunicacion-diseno.html">Comunicación y Diseño</a></li>
+                                    <li><a class="dropdown-item item-proy" href="proyectos-coord.html">Proyectos</a></li>
                                 </ul>
                             </li>
 
@@ -214,12 +215,14 @@
                             <div class="sosbi-feature-card card-azul w-100">
                                 <div class="icon-circle"><i class="bi bi-star-fill"></i></div>
                                 <h4 class="mb-3 text-center" style="color: var(--main-azul-marino);">Valores</h4>
-                                <ul class="list-unstyled mb-0 text-muted">
-                                    <li class="mb-2 text-center">Respeto, Trabajo en equipo</li>
-                                    <li class="mb-2 text-center">Innovación, Espíritu de superación</li>
-                                    <li class="mb-2 text-center">Pasión, excelencia e Integridad</li>
-                                    <li class="text-center">Diversidad, Inclusión y Responsabilidad</li>
-                                </ul>
+                                <div class="d-flex justify-content-center">
+                                    <ul class="text-muted mb-0 text-start" style="padding-left: 1.5rem;">
+                                        <li class="mb-2">Respeto, Responsabilidad y Trabajo en equipo</li>
+                                        <li class="mb-2">Innovación y Espíritu de superación</li>
+                                        <li class="mb-2">Pasión, Excelencia e Integridad</li>
+                                        <li>Diversidad e Inclusión</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -241,13 +244,13 @@
                                 <h5 style="color: var(--main-azul-marino);">Mesa Directiva Fundadora (2017)</h5>
                                 <hr>
                                 <ul class="list-unstyled legacy-list text-dark">
-                                    <li><strong>Presidente:</strong> Gorostieta Esperon Miguel Angel Santiago</li>
-                                    <li><strong>Vice-Presidente:</strong> Angeles Ledesma Christian Manuel</li>
-                                    <li><strong>Tesorero:</strong> Velasco Zavala Ricardo Omar</li>
-                                    <li><strong>Secretario:</strong> Ruelas Becerril Gabriel</li>
-                                    <li><strong>Relaciones Públicas y Difusión:</strong> Laguna Romero Elizabeth</li>
-                                    <li><strong>Recursos Humanos:</strong> Selim Alvarez Nora</li>
-                                    <li><strong>Coordinador de Proyectos:</strong> Betán Santillán Ana Cristina</li>
+                                    <li><strong>Presidente:</strong> Miguel Ángel Santiago Gorostieta Esperón</li>
+                                    <li><strong>Vicepresidente:</strong> Christian Manuel Ángeles Ledesma</li>
+                                    <li><strong>Secretario:</strong> Bryan Homero Ramírez Contreras</li>
+                                    <li><strong>Tesorero:</strong> Ricardo Omar Velasco Zavala</li>
+                                    <li><strong>Coordinación de Proyectos:</strong> Ana Cristina Betán Santillán</li>
+                                    <li><strong>Recursos Humanos:</strong> Nora Selim Álvarez</li>
+                                    <li><strong>Relaciones Públicas y Comunicación:</strong> Elizabeth Laguna Romero</li>
                                 </ul>
                             </div>
                         </div>
@@ -294,7 +297,7 @@
                         
                         <div class="col-lg-3 col-md-4 col-sm-6 text-center reveal reveal-up delay-1">
                             <div class="team-card leadership-card pb-4 shadow-sm h-100 position-relative">
-                                <img src="images/members/foto-placeholder.webp" alt="Liliana Mendoza" class="team-img-placeholder mb-3">
+                                <img src="images/members/Liliana Estefanía Mendoza Trejo.webp" alt="Liliana Mendoza" class="team-img-placeholder mb-3">
                                 <h6 class="mb-0 px-2 fw-bold" style="color: var(--main-azul-marino);">Liliana Estefanía Mendoza Trejo</h6>
                                 <p class="small text-muted mb-3 mt-1 fw-bold" style="color: var(--contrast-turquesa-fuerte) !important;">Presidenta</p>
                                 <a href="https://www.linkedin.com/in/liliana-estefania-mendoza-trejo-153b242a3/" target="_blank" class="team-social-link" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
@@ -303,7 +306,7 @@
 
                         <div class="col-lg-3 col-md-4 col-sm-6 text-center reveal reveal-up delay-2">
                             <div class="team-card leadership-card pb-4 shadow-sm h-100 position-relative">
-                                <img src="images/members/foto-placeholder.webp" alt="Miguel Navarrete" class="team-img-placeholder mb-3">
+                                <img src="images/members/Miguel Ángel Navarrete Quintanilla.webp" alt="Miguel Navarrete" class="team-img-placeholder mb-3">
                                 <h6 class="mb-0 px-2 fw-bold" style="color: var(--main-azul-marino);">Miguel Ángel Navarrete Quintanilla</h6>
                                 <p class="small text-muted mb-3 mt-1 fw-bold" style="color: var(--contrast-turquesa-fuerte) !important;">Vicepresidente</p>
                                 <a href="https://www.linkedin.com/in/miguel-angel-navarrete-quintanilla/" target="_blank" class="team-social-link" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
@@ -312,7 +315,7 @@
 
                         <div class="col-lg-3 col-md-4 col-sm-6 text-center reveal reveal-up delay-3">
                             <div class="team-card leadership-card pb-4 shadow-sm h-100 position-relative">
-                                <img src="images/members/foto-placeholder.webp" alt="César Aranda" class="team-img-placeholder mb-3">
+                                <img src="images/members/César Alexis Aranda Meléndez.webp" alt="César Aranda" class="team-img-placeholder mb-3">
                                 <h6 class="mb-0 px-2 fw-bold" style="color: var(--main-azul-marino);">César Alexis Aranda Meléndez</h6>
                                 <p class="small text-muted mb-3 mt-1 fw-bold" style="color: var(--contrast-turquesa-fuerte) !important;">Secretario General</p>
                                 <a href="#" class="team-social-link" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
@@ -321,7 +324,7 @@
 
                         <div class="col-lg-3 col-md-4 col-sm-6 text-center reveal reveal-up delay-1">
                             <div class="team-card leadership-card pb-4 shadow-sm h-100 position-relative">
-                                <img src="images/members/foto-placeholder.webp" alt="Mario Valdez" class="team-img-placeholder mb-3">
+                                <img src="images/members/Mario Jair Valdez Ventura.webp" alt="Mario Valdez" class="team-img-placeholder mb-3">
                                 <h6 class="mb-0 px-2 fw-bold" style="color: var(--main-azul-marino);">Mario Jair Valdez Ventura</h6>
                                 <p class="small text-muted mb-3 mt-1 fw-bold" style="color: var(--contrast-turquesa-fuerte) !important;">Tesorero</p>
                                 <a href="#" class="team-social-link" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
@@ -330,7 +333,7 @@
 
                         <div class="col-lg-3 col-md-4 col-sm-6 text-center reveal reveal-up delay-2">
                             <div class="team-card leadership-card-rh pb-4 shadow-sm h-100 position-relative">
-                                <img src="images/members/foto-placeholder.webp" alt="Anaid López" class="team-img-placeholder mb-3">
+                                <img src="images/members/Anaid Andrea López Candido.webp" alt="Anaid López" class="team-img-placeholder mb-3">
                                 <h6 class="mb-0 px-2 fw-bold" style="color: var(--main-azul-marino);">Anaid Andrea López Candido</h6>
                                 <p class="small text-muted mb-3 mt-1 fw-bold" style="color: var(--contrast-turquesa-fuerte) !important;">Coordinadora de Recursos Humanos</p>
                                 <a href="#" class="team-social-link" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
@@ -339,7 +342,7 @@
 
                         <div class="col-lg-3 col-md-4 col-sm-6 text-center reveal reveal-up delay-3">
                             <div class="team-card leadership-card-proy pb-4 shadow-sm h-100 position-relative">
-                                <img src="images/members/foto-placeholder.webp" alt="Melissa Archundia" class="team-img-placeholder mb-3">
+                                <img src="images/members/Melissa Natalia Archundia Tapia.webp" alt="Melissa Archundia" class="team-img-placeholder mb-3">
                                 <h6 class="mb-0 px-2 fw-bold" style="color: var(--main-azul-marino);">Melissa Natalia Archundia Tapia</h6>
                                 <p class="small text-muted mb-3 mt-1 fw-bold" style="color: var(--contrast-turquesa-fuerte) !important;">Coordinadora de Proyectos</p>
                                 <a href="#" class="team-social-link" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
@@ -348,7 +351,7 @@
 
                         <div class="col-lg-3 col-md-4 col-sm-6 text-center reveal reveal-up delay-1">
                             <div class="team-card leadership-card-com pb-4 shadow-sm h-100 position-relative">
-                                <img src="images/members/foto-placeholder.webp" alt="Natalia Villa" class="team-img-placeholder mb-3">
+                                <img src="images/members/Natalia Alejandra Villa Vega.webp" alt="Natalia Villa" class="team-img-placeholder mb-3">
                                 <h6 class="mb-0 px-2 fw-bold" style="color: var(--main-azul-marino);">Natalia Alejandra Villa Vega</h6>
                                 <p class="small text-muted mb-3 mt-1 fw-bold" style="color: var(--contrast-turquesa-fuerte) !important;">Coordinadora de Comunicación</p>
                                 <a href="#" class="team-social-link" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
@@ -357,7 +360,7 @@
 
                         <div class="col-lg-3 col-md-4 col-sm-6 text-center reveal reveal-up delay-2">
                             <div class="team-card leadership-card-rrpp pb-4 shadow-sm h-100 position-relative">
-                                <img src="images/members/foto-placeholder.webp" alt="Osvaldo Altamirano" class="team-img-placeholder mb-3">
+                                <img src="images/members/Osvaldo Altamirano Jiménez.webp" alt="Osvaldo Altamirano" class="team-img-placeholder mb-3">
                                 <h6 class="mb-0 px-2 fw-bold" style="color: var(--main-azul-marino);">Osvaldo Altamirano Jiménez</h6>
                                 <p class="small text-muted mb-3 mt-1 fw-bold" style="color: var(--contrast-turquesa-fuerte) !important;">Coordinador de Relaciones Públicas</p>
                                 <a href="https://www.linkedin.com/in/altamirano-jimenez-osvaldo-595128328/" target="_blank" class="team-social-link" title="LinkedIn"><i class="bi bi-linkedin"></i></a>

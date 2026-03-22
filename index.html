@@ -17,6 +17,76 @@
         <link href="css/bootstrap-icons.css" rel="stylesheet">
         
         <link href="css/template-sosbi.css" rel="stylesheet">
+        <link href="css/coordinaciones.css" rel="stylesheet">
+
+        <style>
+            /* =========================================
+               CORRECCIÓN DE ESPACIOS PARA TABLETS Y CELULARES
+               ========================================= */
+            @media (max-width: 991px) {
+                #inicio {
+                    height: auto !important;
+                    min-height: 100vh !important;
+                    padding-top: 140px !important; 
+                    padding-bottom: 80px !important; 
+                }
+                
+                /* OCULTAMOS LA OLA EN CELULARES */
+                #inicio svg {
+                    display: none !important;
+                }
+                
+                #inicio .col-lg-6.text-center img {
+                    max-width: 60% !important;
+                    margin-top: 30px !important;
+                    margin-bottom: 20px !important;
+                }
+            }
+
+            /* =========================================
+               CORRECCIÓN ESPECÍFICA PARA NOSOTROS EN CELULAR
+               ========================================= */
+            @media (max-width: 767.98px) {
+                #intro-nosotros {
+                    position: relative;
+                    z-index: 2;
+                    padding-top: 80px !important;
+                    padding-bottom: 80px !important;
+                    overflow: visible !important;
+                }
+
+                #intro-nosotros .row.align-items-center {
+                    row-gap: 2rem;
+                }
+
+                #intro-nosotros .col-lg-6.col-12 {
+                    flex: 0 0 100%;
+                    max-width: 100%;
+                }
+
+                #intro-nosotros .col-lg-6.col-12 .row.g-3 {
+                    --bs-gutter-y: 1rem;
+                }
+
+                /* Apilamos las imágenes una sobre otra en celular */
+                #intro-nosotros .col-lg-6.col-12 .col-6,
+                #intro-nosotros .col-lg-6.col-12 .col-md-6 {
+                    flex: 0 0 100%;
+                    max-width: 100%;
+                }
+
+                /* SEPARACIÓN EXACTA ENTRE LAS DOS IMÁGENES APILADAS */
+                #intro-nosotros .col-lg-6.col-12 .col-md-6:last-child {
+                    margin-top: 20px !important; 
+                }
+
+                #intro-nosotros img {
+                    width: 100%;
+                    height: auto;
+                    display: block;
+                }
+            }
+        </style>
     </head>
     
     <body>
@@ -37,21 +107,17 @@
     
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-auto align-items-lg-center">
-                            
                             <li class="nav-item"><a class="nav-link active" href="index.html">Inicio</a></li>
-
                             <li class="nav-item"><a class="nav-link" href="about.html">Sobre Nosotros</a></li>
-
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Coordinaciones</a>
                                 <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="recursos-humanos.html">Recursos Humanos</a></li>
-                                    <li><a class="dropdown-item" href="relaciones-publicas.html">Relaciones Públicas</a></li>
-                                    <li><a class="dropdown-item" href="comunicacion-diseno.html">Comunicación y Diseño</a></li>
-                                    <li><a class="dropdown-item" href="proyectos-coord.html">Proyectos</a></li>
+                                    <li><a class="dropdown-item item-rh" href="recursos-humanos.html">Recursos Humanos</a></li>
+                                    <li><a class="dropdown-item item-rrpp" href="relaciones-publicas.html">Relaciones Públicas</a></li>
+                                    <li><a class="dropdown-item item-com" href="comunicacion-diseno.html">Comunicación y Diseño</a></li>
+                                    <li><a class="dropdown-item item-proy" href="proyectos-coord.html">Proyectos</a></li>
                                 </ul>
                             </li>
-
                             <li class="nav-item"><a class="nav-link" href="eventos.html">Próximos Eventos</a></li>
                             <li class="nav-item"><a class="nav-link" href="cursos.html">Cursos</a></li>
                             <li class="nav-item"><a class="nav-link" href="proyectos-actuales.html">Proyectos y Programas</a></li>
@@ -65,7 +131,6 @@
                 <div class="section-overlay"></div>
                 <div class="container position-relative">
                     <div class="row align-items-center">
-                        
                         <div class="col-lg-6 col-12 mb-5 mb-lg-0 text-center text-lg-start reveal reveal-right">
                             <div class="hero-legend">
                                 Sociedad de Alumnos de Sistemas Biomédicos (SOSBI)
@@ -89,7 +154,10 @@
                         </div>
                     </div>
                 </div>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" style="position: absolute; bottom: 0; left: 0; width: 100%; z-index: 1;"><path fill="#ffffff" fill-opacity="1" d="M0,224L34.3,192C68.6,160,137,96,206,90.7C274.3,85,343,139,411,144C480,149,549,107,617,122.7C685.7,139,754,213,823,240C891.4,267,960,245,1029,224C1097.1,203,1166,181,1234,160C1302.9,139,1371,117,1406,106.7L1440,96L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path></svg>
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" style="position: absolute; bottom: -1px; left: 0; width: 100%; z-index: 1; display: block; pointer-events: none;">
+                    <path fill="#ffffff" fill-opacity="1" d="M0,224L34.3,192C68.6,160,137,96,206,90.7C274.3,85,343,139,411,144C480,149,549,107,617,122.7C685.7,139,754,213,823,240C891.4,267,960,245,1029,224C1097.1,203,1166,181,1234,160C1302.9,139,1371,117,1406,106.7L1440,96L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path>
+                </svg>
             </section>
 
             <section class="about-section section-padding bg-white" id="intro-nosotros">
@@ -106,10 +174,10 @@
 
                         <div class="col-lg-6 col-12">
                             <div class="row g-3">
-                                <div class="col-6 reveal reveal-zoom delay-1">
+                                <div class="col-6 col-md-6 reveal reveal-zoom delay-1">
                                     <img src="images/members/miembros2024.webp" class="img-fluid rounded shadow" alt="Miembros 2024">
                                 </div>
-                                <div class="col-6 mt-4 reveal reveal-zoom delay-2">
+                                <div class="col-6 col-md-6 reveal reveal-zoom delay-2">
                                     <img src="images/members/generacion2026.webp" class="img-fluid rounded shadow" alt="Generación 2026">
                                 </div>
                             </div>
@@ -121,7 +189,6 @@
             <section class="events-section section-padding" id="intro-proyectos" style="background-color: var(--main-azul-marino);">
                 <div class="container">
                     <div class="row">
-                        
                         <div class="col-lg-12 col-12 mb-5 text-center reveal reveal-down">
                             <h2 class="mb-3 text-white">Proyectos Destacados</h2>
                             <p class="text-white-50 fs-5">Innovación biomédica en desarrollo. Conoce lo que estamos construyendo.</p>
@@ -163,7 +230,6 @@
             <section class="about-section section-padding" id="intro-cursos" style="background-color: #f0f7f9;">
                 <div class="container">
                     <div class="row align-items-center">
-                        
                         <div class="col-lg-6 col-12 order-lg-1 reveal reveal-right">
                             <img src="images/cursossinapsis.webp" class="img-fluid rounded shadow-lg" alt="Cursos Sinapsis" style="border: 5px solid white;">
                         </div>
@@ -209,19 +275,11 @@
 
                     <div class="col-lg-3 col-md-12 col-12 text-lg-end mt-4 mt-lg-0 d-flex flex-column align-items-lg-end justify-content-center reveal reveal-up delay-2">
                         <h5 class="site-footer-title mb-3 text-white">Síguenos</h5>
-                        
                         <ul class="social-icon justify-content-lg-end mb-4">
-                            <li class="social-icon-item">
-                                <a href="https://instagram.com/sosbifiunam" target="_blank" class="social-icon-link bi-instagram"></a>
-                            </li>
-                            <li class="social-icon-item">
-                                <a href="https://www.linkedin.com/company/sosbi-fiunam/" target="_blank" class="social-icon-link bi-linkedin"></a>
-                            </li>
-                            <li class="social-icon-item">
-                                <a href="https://www.tiktok.com/@sosbifiunam" target="_blank" class="social-icon-link bi-tiktok"></a>
-                            </li>
+                            <li class="social-icon-item"><a href="https://instagram.com/sosbifiunam" target="_blank" class="social-icon-link bi-instagram"></a></li>
+                            <li class="social-icon-item"><a href="https://www.linkedin.com/company/sosbi-fiunam/" target="_blank" class="social-icon-link bi-linkedin"></a></li>
+                            <li class="social-icon-item"><a href="https://www.tiktok.com/@sosbifiunam" target="_blank" class="social-icon-link bi-tiktok"></a></li>
                         </ul>
-                        
                         <div class="copyright-wrap d-flex align-items-center justify-content-lg-end">
                             <p class="copyright-text text-white-50 mb-0">Copyright © 2026 SOSBI UNAM</p>
                         </div>

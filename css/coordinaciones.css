@@ -93,12 +93,14 @@
 .activity-item::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 5px; z-index: 10; transition: 0.3s; }
 .activity-item:hover::before { height: 8px; }
 
-.activity-img { position: relative; overflow: hidden; height: 220px; }
-.activity-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+/* AJUSTE PARA LAS FOTOS: Más altura y alineación arriba para no cortar cabezas */
+.activity-img { position: relative; overflow: hidden; height: 280px; }
+.activity-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: 0.6s; }
 .activity-item:hover .activity-img img { transform: scale(1.1); }
 
+/* AJUSTE PARA LA VIÑETA (CÍRCULO): Bajó para ajustarse a la nueva altura de la foto */
 .activity-badge {
-  position: absolute; top: 190px; right: 25px; width: 60px; height: 60px; border-radius: 50%;
+  position: absolute; top: 250px; right: 25px; width: 60px; height: 60px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center; color: #fff; font-size: 24px;
   z-index: 12; box-shadow: 0 8px 20px rgba(0,0,0,0.1); transition: 0.4s;
 }
@@ -122,7 +124,7 @@
    TARJETA DEL COORDINADOR
    ========================================= */
 .coordinator-card { border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
-.coordinator-header { padding: 30px; text-align: center; }
+.coordinator-header { padding: 30px 30px 90px 30px; text-align: center; }
 
 /* Headers combinan el Azul SOSBI con el Subtono de la Coordinación */
 .header-rrpp { background: linear-gradient(90deg, var(--main-azul-marino), var(--rrpp-sub)); }
@@ -137,13 +139,11 @@
    ========================================= */
 
 @media (min-width: 992px) {
-  /* 1. Al pasar el mouse (Hover) - Cada opción se ilumina de su color */
   .navbar .dropdown-menu .item-rh:hover { background-color: var(--rh-sub) !important; color: #fff !important; border-radius: 5px; margin: 0 5px; }
   .navbar .dropdown-menu .item-rrpp:hover { background-color: var(--rrpp-sub) !important; color: #fff !important; border-radius: 5px; margin: 0 5px; }
   .navbar .dropdown-menu .item-com:hover { background-color: var(--com-sub) !important; color: #fff !important; border-radius: 5px; margin: 0 5px; }
   .navbar .dropdown-menu .item-proy:hover { background-color: var(--proy-sub) !important; color: #fff !important; border-radius: 5px; margin: 0 5px; }
 
-  /* 2. Cuando ya estás en esa página (Active) - Se queda seleccionado en su color */
   .navbar .dropdown-menu .item-rh.active { background-color: var(--rh-sub) !important; color: #fff !important; border-radius: 5px; margin: 0 5px; }
   .navbar .dropdown-menu .item-rrpp.active { background-color: var(--rrpp-sub) !important; color: #fff !important; border-radius: 5px; margin: 0 5px; }
   .navbar .dropdown-menu .item-com.active { background-color: var(--com-sub) !important; color: #fff !important; border-radius: 5px; margin: 0 5px; }
@@ -151,7 +151,6 @@
 }
 
 @media (max-width: 991px) {
-  /* En celular mantenemos la limpieza de letras doradas sin recuadros feos */
   .navbar .dropdown-menu .dropdown-item.active {
     background-color: transparent !important; 
     color: var(--main-dorado) !important; 
