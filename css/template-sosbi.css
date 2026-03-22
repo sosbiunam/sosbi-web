@@ -1,0 +1,482 @@
+/*
+=========================================================
+  SOSBI UNAM - HOJA DE ESTILOS PRINCIPAL
+  Optimizado y Limpiado para Producción
+=========================================================
+*/
+
+/*---------------------------------------
+  1. VARIABLES Y COLORES SOSBI            
+-----------------------------------------*/
+:root {
+  --menu-azul-oscuro:             #1B2D99;
+  --main-dorado:                  #A27A11;
+  --main-azul-marino:             #17375F; 
+  --contrast-turquesa-fuerte:     #05809A;
+  --contrast-turquesa-claro:      #34A6AA;
+
+  --white-color:                  #ffffff;
+  --section-bg-color:             #F4F1DE;
+  --dark-color:                   #000000;
+  --p-color:                      #717275;
+
+  --body-font-family:             'DM Sans', sans-serif;
+  --title-font-family:            'Poppins', sans-serif;
+
+  --h1-font-size:                 42px;
+  --h2-font-size:                 36px;
+  --h3-font-size:                 28px;
+  --h4-font-size:                 24px;
+  --p-font-size:                  18px;
+  --menu-font-size:               12px;
+  --btn-font-size:                14px;
+
+  --border-radius-large:          100px;
+  --border-radius-medium:         15px;
+  --border-radius-small:          10px;
+}
+
+body {
+  background-color: var(--white-color);
+  font-family: var(--body-font-family); 
+}
+
+::selection {
+  background-color: var(--contrast-turquesa-fuerte);
+  color: var(--white-color);
+}
+
+/*---------------------------------------
+  2. TIPOGRAFÍA Y ESTRUCTURA GENERAL               
+-----------------------------------------*/
+h1, h2, h3, h4, h5, h6, .cd-headline {
+  font-family: var(--title-font-family) !important;
+  font-weight: 700;
+  color: var(--dark-color);
+  letter-spacing: -1px;
+}
+
+p, ul li {
+  color: var(--p-color);
+  font-family: var(--body-font-family);
+  font-size: var(--p-font-size);
+  font-weight: 400;
+}
+
+a {
+  display: inline-block;
+  color: var(--contrast-turquesa-fuerte);
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+a:hover {
+  color: var(--main-dorado);
+}
+
+.section-padding {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.section-overlay {
+  content: "";
+  background: rgba(23, 55, 95, 0.85);
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+}
+
+/*---------------------------------------
+  3. BOTONES SOSBI               
+-----------------------------------------*/
+.custom-btn-group {
+  position: relative;
+  z-index: 10; 
+}
+.custom-btn-group a {
+  cursor: pointer !important;
+}
+
+.custom-btn {
+  background-color: var(--main-dorado) !important;
+  border: 2px solid var(--main-dorado) !important;
+  border-radius: var(--border-radius-large);
+  color: var(--white-color) !important;
+  font-size: var(--btn-font-size);
+  font-weight: 700;
+  padding: 10px 20px;
+  transition: all 0.3s;
+}
+.custom-btn:hover {
+  background-color: var(--contrast-turquesa-fuerte) !important;
+  border-color: var(--contrast-turquesa-fuerte) !important;
+}
+
+.custom-border-btn {
+  background: transparent !important;
+  border: 2px solid var(--main-dorado) !important;
+  border-radius: var(--border-radius-large);
+  color: var(--main-dorado) !important;
+  font-size: var(--btn-font-size);
+  font-weight: 700;
+  padding: 10px 20px;
+  transition: all 0.3s;
+}
+.custom-border-btn:hover {
+  background-color: var(--main-dorado) !important;
+  border-color: transparent !important;
+  color: var(--white-color) !important;
+}
+
+/*---------------------------------------
+  4. NAVEGACIÓN Y LOGO              
+-----------------------------------------*/
+.navbar {
+  background-color: var(--menu-azul-oscuro) !important;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  z-index: 99;
+}
+
+.navbar-brand { 
+  display: flex !important;
+  align-items: center !important;
+  flex-shrink: 0 !important;
+  min-width: 260px !important;
+  margin-right: 20px !important;
+  padding: 0 !important;
+  max-width: none !important; 
+}
+
+.navbar-brand:hover, .navbar-brand:focus,
+.navbar-brand:hover *, .navbar-brand:focus * { 
+  transform: none !important; 
+  transition: none !important;
+  animation: none !important;
+  letter-spacing: 1px !important;
+}
+
+.navbar-logo-img { 
+  width: 55px !important; 
+  height: auto !important; 
+  margin-right: 12px !important; 
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+} 
+
+.navbar-brand-text { 
+  color: #ffffff !important; 
+  font-family: 'Montserrat', sans-serif !important; 
+  font-weight: 900 !important; 
+  font-size: 24px !important; 
+  letter-spacing: 1px !important; 
+  line-height: 1 !important; 
+  margin-top: 5px !important; 
+  bottom: auto !important;
+}
+
+.navbar-brand-text small { 
+  color: var(--main-dorado) !important; 
+  font-weight: 800 !important; 
+  font-size: 11px !important; 
+  display: block !important; 
+  letter-spacing: 2px !important; 
+  margin: 0 !important;
+}
+
+.navbar-nav .nav-link { 
+  color: #ffffff !important; 
+  font-weight: 500; 
+  text-transform: uppercase; 
+  font-size: var(--menu-font-size); 
+  padding: 10px 12px !important;
+  white-space: nowrap;
+  transition: all 0.3s;
+}
+.navbar-nav .nav-link.active, .navbar-nav .nav-link:hover { 
+  color: var(--main-dorado) !important; 
+}
+
+/* =========================================
+   FIX DEL MENÚ DESPLEGABLE (PC Y MÓVIL)
+   ========================================= */
+
+/* Para Computadora */
+@media (min-width: 992px) {
+  .navbar-nav .nav-item.dropdown { 
+      position: relative; 
+      /* Eliminamos el padding que desalineaba el texto */
+  }
+  .navbar-nav .dropdown-menu { 
+      background: var(--white-color);
+      box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
+      border: 0;
+      border-radius: 8px;
+      display: block;
+      visibility: hidden; 
+      opacity: 0;
+      pointer-events: none;
+      left: 50% !important; 
+      right: auto !important; 
+      transform: translateX(-50%) !important; 
+      top: 100% !important; 
+      margin-top: 0 !important;
+      min-width: 220px;
+      padding: 10px 0;
+      transition: all 0.3s ease;
+  }
+  
+  /* FIX: Puente invisible creado desde el submenú hacia arriba, sin mover el botón original */
+  .navbar-nav .dropdown-menu::before {
+      content: '';
+      position: absolute;
+      top: -15px; 
+      left: 0;
+      width: 100%;
+      height: 15px;
+      background: transparent;
+  }
+
+  .navbar-nav .dropdown:hover .dropdown-menu,
+  .navbar-nav .dropdown-menu.show { 
+      opacity: 1 !important; 
+      visibility: visible !important;
+      pointer-events: auto !important;
+  }
+  .navbar .dropdown-item { 
+    color: var(--p-color); 
+    font-weight: 500; 
+    padding: 8px 20px;
+  }
+  .navbar .dropdown-item:hover { 
+      color: var(--contrast-turquesa-fuerte); 
+      background: transparent;
+  }
+}
+
+/* Para Celular (Fix Táctil y siempre abierto) */
+@media (max-width: 991.98px) {
+  .navbar-nav .dropdown-menu {
+      position: relative !important; 
+      background-color: var(--menu-azul-oscuro) !important;
+      border: none !important;
+      box-shadow: none !important;
+      margin: 0 !important;
+      padding-left: 20px !important;
+      width: 100% !important;
+      display: block !important; /* FIX: Siempre visible en celular */
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+  }
+  
+  /* Ocultamos la flechita del botón en celular porque ya está abierto */
+  .navbar-nav .dropdown-toggle::after {
+      display: none !important;
+  }
+
+  .navbar-nav .dropdown-item {
+      color: rgba(255, 255, 255, 0.85) !important;
+      padding: 12px 0 !important; 
+      font-size: 14px !important;
+      white-space: normal !important; 
+      display: block !important;
+  }
+  .navbar-nav .dropdown-item:hover {
+      background-color: transparent !important;
+      color: var(--main-dorado) !important;
+  }
+}
+
+/* Botón Hamburguesa Móvil */
+.navbar-toggler { border: 0; padding: 0; cursor: pointer; outline: none; width: 30px; height: 35px; }
+.navbar-toggler:focus { outline: none; box-shadow: none; }
+.navbar-toggler-icon { background: var(--white-color); display: block; width: 30px; height: 2px; position: relative; transition: background 10ms 300ms ease;}
+.navbar-toggler-icon:before, .navbar-toggler-icon:after { position: absolute; right: 0; left: 0; background: var(--white-color); width: 30px; height: 2px; content: ''; transition: top 300ms 350ms ease, transform 300ms 50ms ease;}
+.navbar-toggler-icon::before { top: -8px; }
+.navbar-toggler-icon::after { top: 8px; }
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon { background: transparent; }
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:before { top: 0; transform: rotate(45deg); }
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:after { top: 0; transform: rotate(-45deg); }
+
+/*---------------------------------------
+  5. SECCIÓN HERO (INICIO PRINCIPAL)        
+-----------------------------------------*/
+.hero-section {
+  background-image: url('../images/cia.webp') !important; 
+  background-color: var(--main-azul-marino) !important;
+  background-repeat: no-repeat !important; 
+  background-size: cover !important; 
+  background-position: center !important;
+  position: relative; 
+  padding-top: 20px !important;  
+  padding-bottom: 170px !important; 
+  min-height: 660px !important;     
+  height: auto !important;
+  margin-bottom: -90px; 
+  overflow: visible;
+}
+
+.hero-section .row {
+  position: relative;
+  z-index: 5;
+}
+
+/*---------------------------------------
+  5.B. SECCIÓN HERO CORTA (SOBRE NOSOTROS, ETC.)        
+-----------------------------------------*/
+.hero-short {
+  min-height: 45vh !important;
+  height: auto !important;
+  padding-top: 160px !important;
+  padding-bottom: 140px !important; 
+  margin-bottom: -50px !important; 
+  z-index: 10 !important; 
+}
+.hero-short .container {
+  z-index: 5 !important;
+  position: relative;
+}
+
+.hero-legend {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: var(--white-color);
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  background: rgba(0,0,0,0.3);
+  padding: 8px 15px;
+  border-radius: 6px;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+/*---------------------------------------
+  6. TARJETAS DE PROYECTOS (INICIO)            
+-----------------------------------------*/
+.project-card-wrapper { 
+  border-radius: var(--border-radius-medium); 
+  overflow: hidden; 
+  background-color: var(--white-color); 
+}
+.project-card-wrapper .custom-block-info { padding-bottom: 25px !important; }
+.project-card-wrapper .btn { display: block !important; }
+
+/*---------------------------------------
+  7. MÓDULOS DE MISIÓN, VISIÓN Y VALORES            
+-----------------------------------------*/
+.sosbi-feature-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 40px 30px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(27, 45, 153, 0.05); 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(0,0,0,0.03);
+  z-index: 1;
+}
+.sosbi-feature-card:hover {
+  transform: translateY(-8px); 
+  box-shadow: 0 20px 40px rgba(27, 45, 153, 0.1);
+}
+.sosbi-feature-card::before {
+  content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; border-radius: 20px 20px 0 0;
+}
+.card-dorado::before { background: linear-gradient(90deg, #A27A11, #F2CC8F); }
+.card-turquesa::before { background: linear-gradient(90deg, #05809A, #34A6AA); }
+.card-azul::before { background: linear-gradient(90deg, #1B2D99, #17375F); }
+
+.icon-circle {
+  width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 25px auto; font-size: 35px; transition: transform 0.3s ease;
+}
+.sosbi-feature-card:hover .icon-circle { transform: scale(1.1); }
+.card-dorado .icon-circle { background-color: rgba(162, 122, 17, 0.1); color: #A27A11; }
+.card-turquesa .icon-circle { background-color: rgba(5, 128, 154, 0.1); color: #05809A; }
+.card-azul .icon-circle { background-color: rgba(27, 45, 153, 0.1); color: #1B2D99; }
+
+/*---------------------------------------
+  8. EQUIPO, LEGADO Y LINKEDIN            
+-----------------------------------------*/
+.legacy-list li { margin-bottom: 8px; }
+.team-card { border-radius: 15px; overflow: hidden; background: #fff; border: 1px solid #eee; transition: transform 0.3s; }
+.team-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+.team-img-placeholder { width: 100%; aspect-ratio: 1/1; object-fit: cover; background-color: #e9ecef; }
+
+.team-social-link {
+  display: inline-flex; align-items: center; justify-content: center; width: 35px; height: 35px; border-radius: 50%; background-color: #f0f7f9; color: #0077b5; transition: all 0.3s ease; font-size: 1.1rem; text-decoration: none;
+}
+.team-social-link:hover { background-color: #0077b5; color: #fff; transform: translateY(-3px); }
+
+/*---------------------------------------
+  9. PIE DE PÁGINA (FOOTER) Y REDES SOCIALES            
+-----------------------------------------*/
+.site-footer { 
+  background-color: var(--main-azul-marino) !important; 
+  position: relative; 
+  padding-bottom: 200px; 
+}
+.site-footer .container { position: relative; z-index: 2; }
+.site-footer svg { position: absolute; bottom: 0; right: 0; left: 0; pointer-events: none; }
+
+.social-icon { margin: 0; padding: 0; }
+.social-icon-item { list-style: none; display: inline-block; vertical-align: top; }
+.social-icon-link { 
+  background: var(--contrast-turquesa-fuerte); 
+  border-radius: var(--border-radius-large); 
+  color: var(--white-color); 
+  font-size: var(--btn-font-size); 
+  display: block; margin-right: 5px; text-align: center; 
+  width: 35px; height: 35px; line-height: 36px; 
+  transition: all 0.3s; 
+}
+.social-icon-link:hover { background: var(--main-dorado); color: var(--white-color); }
+
+/*---------------------------------------
+  10. ANIMACIÓN TEXTO ROTATORIO (CD-HEADLINE)               
+-----------------------------------------*/
+.cd-words-wrapper { display: inline-block; position: relative; text-align: left; }
+.cd-words-wrapper b { color: var(--main-dorado) !important; display: inline-block; position: absolute; white-space: nowrap; left: 0; top: 0; }
+.cd-words-wrapper b.is-visible { position: relative; }
+
+.cd-headline.rotate-1 .cd-words-wrapper { perspective: 300px; }
+.cd-headline.rotate-1 b { opacity: 0; transform-origin: 50% 100%; transform: rotateX(180deg); }
+.cd-headline.rotate-1 b.is-visible { opacity: 1; transform: rotateX(0deg); animation: cd-rotate-1-in 1.2s; }
+.cd-headline.rotate-1 b.is-hidden { transform: rotateX(180deg); animation: cd-rotate-1-out 1.2s; }
+
+@keyframes cd-rotate-1-in {
+  0% { transform: rotateX(180deg); opacity: 0; }
+  35% { transform: rotateX(120deg); opacity: 0; }
+  65% { opacity: 0; }
+  100% { transform: rotateX(360deg); opacity: 1; }
+}
+@keyframes cd-rotate-1-out {
+  0% { transform: rotateX(0deg); opacity: 1; }
+  35% { transform: rotateX(-40deg); opacity: 1; }
+  65% { opacity: 0; }
+  100% { transform: rotateX(180deg); opacity: 0; }
+}
+
+/*---------------------------------------
+  11. AJUSTES RESPONSIVOS (MÓVILES GLOBALES)               
+-----------------------------------------*/
+@media screen and (max-width: 991px) {
+  h1 { font-size: 36px; }
+  h2 { font-size: 28px; }
+  .section-padding { padding-top: 60px; padding-bottom: 60px; }
+  
+  .navbar-expand-lg .navbar-nav { padding-top: 15px; padding-bottom: 10px; }
+  .navbar-expand-lg .navbar-nav .nav-link { margin: 5px; padding: 0; }
+  
+  /* Ajuste de ola para celulares en el inicio */
+  .hero-section { 
+    height: auto !important; 
+    min-height: auto !important; 
+    padding-top: 130px !important; 
+    padding-bottom: 130px !important; 
+    margin-bottom: -70px !important; 
+  }
+  
+  .site-footer { padding-top: 20px; padding-bottom: 100px; }
+}
