@@ -1,0 +1,214 @@
+/* =========================================================
+  ESTILOS ESPECÍFICOS PARA COORDINACIONES SOSBI
+  Motor maestro de Tonos y Subtonos
+=========================================================
+*/
+
+:root {
+  /* 1. Relaciones Públicas (RRPP) - Naranjas */
+  --rrpp-base: #FF8A66; 
+  --rrpp-sub: #D85A33;  
+
+  /* 2. Recursos Humanos (RH) - Rojos */
+  --rh-base: #E10000;   
+  --rh-sub: #A30000;    
+
+  /* 3. Proyectos (PROY) - Morados */
+  --proy-base: #D980F9; 
+  --proy-sub: #9B42C6;  
+
+  /* 4. Comunicación y Diseño (COM) - Mentas */
+  --com-base: #6bc3b2;  
+  --com-sub: #459485;   
+}
+
+/* =========================================
+   HERO SECTIONS (DEGRADADOS PRINCIPALES)
+   ========================================= */
+
+.hero-rrpp {
+  background: linear-gradient(135deg, rgba(23, 55, 95, 0.95) 0%, rgba(216, 90, 51, 0.85) 100%), url('../images/cia.webp') !important;
+  background-size: cover !important; background-position: center !important; background-attachment: fixed !important;
+}
+
+.hero-rh {
+  background: linear-gradient(135deg, rgba(23, 55, 95, 0.95) 0%, rgba(163, 0, 0, 0.85) 100%), url('../images/cia.webp') !important;
+  background-size: cover !important; background-position: center !important; background-attachment: fixed !important;
+}
+
+.hero-proy {
+  background: linear-gradient(135deg, rgba(23, 55, 95, 0.95) 0%, rgba(155, 66, 198, 0.85) 100%), url('../images/cia.webp') !important;
+  background-size: cover !important; background-position: center !important; background-attachment: fixed !important;
+}
+
+.hero-com {
+  background: linear-gradient(135deg, rgba(23, 55, 95, 0.95) 0%, rgba(69, 148, 133, 0.85) 100%), url('../images/cia.webp') !important;
+  background-size: cover !important; background-position: center !important; background-attachment: fixed !important;
+}
+
+/* =========================================
+   UTILIDADES DE TEXTO, FONDO Y BORDES
+   ========================================= */
+
+.text-rrpp { color: var(--rrpp-base) !important; }
+.bg-rrpp { background-color: var(--rrpp-sub) !important; }
+
+.text-rh { color: var(--rh-base) !important; }
+.bg-rh { background-color: var(--rh-sub) !important; }
+
+.text-proy { color: var(--proy-base) !important; }
+.bg-proy { background-color: var(--proy-sub) !important; }
+
+.text-com { color: var(--com-base) !important; }
+.bg-com { background-color: var(--com-sub) !important; }
+
+/* =========================================
+   TARJETAS DE ACTIVIDADES (DISEÑO GLASSMORPHISM PRO)
+   ========================================= */
+.activity-item {
+  background: linear-gradient(145deg, #ffffff, #f5f7fa);
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.5); /* Toque glassmorphism */
+}
+
+/* Efecto hover elegante */
+.activity-item:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* La línea superior de acento dinámica */
+.activity-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  z-index: 10;
+  transition: height 0.3s ease;
+}
+
+.activity-item:hover::before {
+  height: 8px; /* Crece sutilmente al pasar el mouse */
+}
+
+.activity-img {
+  position: relative;
+  overflow: hidden;
+  height: 220px;
+  background-color: #f0f7f9;
+}
+
+.activity-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.activity-item:hover .activity-img img {
+  transform: scale(1.12); /* Zoom de imagen interior */
+}
+
+/* Medallón flotante en el borde de la imagen */
+.activity-badge {
+  position: absolute;
+  top: 190px; /* Matemáticas: 220px (foto) - 30px (mitad del badge) */
+  right: 25px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 24px;
+  z-index: 12;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.activity-content {
+  position: relative;
+  padding: 35px 25px 25px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+/* Tipografía de jerarquía clara */
+.activity-content h4 {
+  font-size: 22px;
+  color: var(--main-azul-marino);
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.activity-content p {
+  font-size: 15px;
+  color: var(--p-color);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* Modificadores de Color por Coordinación (Acento y Badge) */
+.item-rrpp::before { background: linear-gradient(90deg, var(--rrpp-base), var(--rrpp-sub)); }
+.item-rrpp .activity-badge { background: linear-gradient(135deg, var(--rrpp-base), var(--rrpp-sub)); }
+.item-rrpp:hover .activity-badge { transform: translateY(-5px) rotateY(180deg); box-shadow: 0 12px 25px rgba(255, 138, 102, 0.4); }
+
+.item-rh::before { background: linear-gradient(90deg, var(--rh-base), var(--rh-sub)); }
+.item-rh .activity-badge { background: linear-gradient(135deg, var(--rh-base), var(--rh-sub)); }
+.item-rh:hover .activity-badge { transform: translateY(-5px) rotateY(180deg); box-shadow: 0 12px 25px rgba(225, 0, 0, 0.4); }
+
+.item-proy::before { background: linear-gradient(90deg, var(--proy-base), var(--proy-sub)); }
+.item-proy .activity-badge { background: linear-gradient(135deg, var(--proy-base), var(--proy-sub)); }
+.item-proy:hover .activity-badge { transform: translateY(-5px) rotateY(180deg); box-shadow: 0 12px 25px rgba(217, 128, 249, 0.4); }
+
+.item-com::before { background: linear-gradient(90deg, var(--com-base), var(--com-sub)); }
+.item-com .activity-badge { background: linear-gradient(135deg, var(--com-base), var(--com-sub)); }
+.item-com:hover .activity-badge { transform: translateY(-5px) rotateY(180deg); box-shadow: 0 12px 25px rgba(107, 195, 178, 0.4); }
+
+/* =========================================
+   CARRUSEL INDICATORS (PUNTITOS)
+   ========================================= */
+.carousel-indicators [data-bs-target] {
+  width: 12px; height: 12px; border-radius: 50%; margin: 0 5px;
+}
+.carousel-rrpp .carousel-indicators [data-bs-target] { background-color: var(--rrpp-sub); }
+.carousel-rrpp .carousel-indicators .active { background-color: var(--rrpp-base); transform: scale(1.2); }
+
+.carousel-rh .carousel-indicators [data-bs-target] { background-color: var(--rh-sub); }
+.carousel-rh .carousel-indicators .active { background-color: var(--rh-base); transform: scale(1.2); }
+
+.carousel-proy .carousel-indicators [data-bs-target] { background-color: var(--proy-sub); }
+.carousel-proy .carousel-indicators .active { background-color: var(--proy-base); transform: scale(1.2); }
+
+.carousel-com .carousel-indicators [data-bs-target] { background-color: var(--com-sub); }
+.carousel-com .carousel-indicators .active { background-color: var(--com-base); transform: scale(1.2); }
+
+/* =========================================
+   TARJETA DEL COORDINADOR
+   ========================================= */
+.coordinator-card {
+  border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border: 1px solid rgba(0,0,0,0.05);
+}
+.coordinator-header { padding: 30px; text-align: center; }
+
+.header-rrpp { background: linear-gradient(90deg, var(--main-azul-marino), var(--rrpp-sub)); }
+.header-rh { background: linear-gradient(90deg, var(--main-azul-marino), var(--rh-sub)); }
+.header-proy { background: linear-gradient(90deg, var(--main-azul-marino), var(--proy-sub)); }
+.header-com { background: linear-gradient(90deg, var(--main-azul-marino), var(--com-sub)); }
+
+.coordinator-img {
+  width: 150px; height: 150px; border-radius: 50%; border: 5px solid #fff; object-fit: cover;
+  margin-top: -75px; background-color: #eee; box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
