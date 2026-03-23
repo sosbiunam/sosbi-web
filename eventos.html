@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Eventos - Sociedad de Alumnos de Sistemas Biomédicos (SOSBI) UNAM">
+        <meta name="author" content="Miguel Navarrete">
+
+        <title>Eventos | SOSBI UNAM</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Montserrat:wght@800;900&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+        
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap-icons.css" rel="stylesheet">
+        <link href="css/template-sosbi.css" rel="stylesheet">
+        <link href="css/coordinaciones.css" rel="stylesheet">
+
+        <style>
+            /* Héroe de Eventos */
+            .hero-eventos {
+                background: linear-gradient(135deg, rgba(23, 55, 95, 0.95) 0%, rgba(23, 55, 95, 0.85) 55%, rgba(162, 122, 17, 0.9) 100%), url('images/cia.webp') !important;
+                background-size: cover !important; 
+                background-position: center !important; 
+                background-attachment: fixed !important;
+            }
+
+            /* --- FONDO DORADO PARA LA SECCIÓN DEL CARRUSEL --- */
+            .bg-dorado-transparent {
+                background-color: rgba(162, 122, 17, 0.08); /* Dorado muy suave y transparente */
+            }
+
+            /* --- ESTILOS DEL CARRUSEL DE PRÓXIMOS EVENTOS --- */
+            .carousel-item-custom {
+                border-radius: 20px;
+                overflow: hidden;
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+                margin-bottom: 50px; 
+                border-bottom: 5px solid rgba(0,0,0,0.1);
+                height: 500px; /* Tamaño fijo */
+            }
+
+            /* Colores pastel para las tarjetas del carrusel */
+            .bg-soft-mint { background-color: #f0fbf7; } /* Verde para Biohack */
+            .bg-soft-orange { background-color: #fff4ec; } /* Naranjoso para Congresos */
+            .bg-soft-blue { background-color: #f0f8ff; } /* Azul para Feria */
+
+            /* Etiquetas de colores para cada evento */
+            .badge-biohack { background-color: #198754; color: white; } /* Verde */
+            .badge-congreso { background-color: #fd7e14; color: white; } /* Naranjoso */
+            .badge-feria { background-color: #0d6efd; color: white; } /* Azul */
+
+            .carousel-img-wrap {
+                height: 100%;
+                min-height: 100%;
+            }
+
+            .carousel-img-wrap img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .carousel-content {
+                /* Padding aumentado a 5rem en los lados para que las flechas no estorben */
+                padding: 3rem 5rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                height: 100%;
+                overflow-y: auto;
+            }
+
+            @media (max-width: 991px) {
+                .carousel-item-custom {
+                    height: 750px; 
+                }
+                .carousel-img-wrap {
+                    height: 250px !important;
+                    min-height: 250px !important;
+                }
+                .carousel-content {
+                    padding: 2rem 3.5rem; /* Ajuste para móviles */
+                }
+            }
+
+            .carousel-content::-webkit-scrollbar { width: 6px; }
+            .carousel-content::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
+
+            .carousel-indicators { bottom: -50px; }
+            .carousel-indicators [data-bs-target] {
+                background-color: var(--main-azul-marino);
+                width: 12px; height: 12px; border-radius: 50%; margin: 0 6px; opacity: 0.5;
+            }
+            .carousel-indicators .active {
+                background-color: var(--main-dorado); opacity: 1; width: 30px; border-radius: 10px;
+            }
+
+            .custom-control-icon {
+                background-color: var(--main-azul-marino);
+                border-radius: 50%;
+                width: 45px; height: 45px;
+                display: flex; align-items: center; justify-content: center;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+                transition: background-color 0.3s;
+            }
+            .custom-control-icon:hover { background-color: var(--main-dorado); }
+            .custom-control-icon i { color: #fff; font-size: 1.5rem; }
+
+            /* --- ESTILOS DE LAS TARJETAS DE EVENTOS RECIENTES --- */
+            .event-card {
+                border: none;
+                border-radius: 15px;
+                overflow: hidden;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+            }
+            .event-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+            }
+
+            /* Colores pastel sutiles para los eventos recientes */
+            .bg-card-1 { background-color: #fffaf0; } /* Naranja/amarillo muy suave */
+            .bg-card-2 { background-color: #f4f6f9; } /* Gris azulado suave */
+            .bg-card-3 { background-color: #f0fdf4; } /* Verde muy suave */
+
+            .event-card-img {
+                width: 100%;
+                height: 220px;
+                object-fit: cover;
+                flex-shrink: 0;
+            }
+
+            .event-card-body {
+                padding: 25px;
+                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .event-description-fixed {
+                height: 100px; 
+                overflow-y: auto;
+                margin-bottom: 15px;
+                font-size: 0.9rem;
+                color: #555;
+            }
+            .event-description-fixed::-webkit-scrollbar { width: 4px; }
+            .event-description-fixed::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
+
+            .event-badge {
+                display: inline-block;
+                padding: 5px 15px;
+                border-radius: 20px;
+                font-size: 0.8rem;
+                font-weight: bold;
+                margin-bottom: 15px;
+                align-self: flex-start;
+            }
+
+            .event-title {
+                color: var(--main-azul-marino);
+                font-weight: 700;
+                font-size: 1.2rem;
+                margin-bottom: 10px;
+                font-family: 'Montserrat', sans-serif;
+            }
+
+            .event-date {
+                color: #444;
+                font-weight: 600;
+                font-size: 0.9rem;
+                margin-top: auto;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .feature-list { list-style: none; padding-left: 0; margin-top: 15px; }
+            .feature-list li { position: relative; padding-left: 25px; margin-bottom: 8px; font-size: 0.9rem; color: #555; }
+            .feature-list li::before { content: '✓'; position: absolute; left: 0; color: #333; font-weight: bold; }
+
+            .bg-dorado { background-color: var(--main-dorado) !important; border: none !important; }
+            .bg-dorado:hover { background-color: #8c6910 !important; }
+        </style>
+    </head>
+    
+    <body>
+        <main>
+            <nav class="navbar navbar-expand-lg sticky-top shadow-lg">                
+                <div class="container">
+                    <a class="navbar-brand" href="index.html">
+                        <img src="images/logo.webp" alt="SOSBI Logo" class="navbar-logo-img">
+                        <span class="navbar-brand-text">SOSBI <small>UNAM</small></span>
+                    </a>
+                    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto align-items-lg-center">
+                            <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                            <li class="nav-item"><a class="nav-link" href="about.html">Sobre Nosotros</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Coordinaciones</a>
+                                <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                                    <li><a class="dropdown-item item-rh" href="recursos-humanos.html">Recursos Humanos</a></li>
+                                    <li><a class="dropdown-item item-rrpp" href="relaciones-publicas.html">Relaciones Públicas</a></li>
+                                    <li><a class="dropdown-item item-com" href="comunicacion-diseno.html">Comunicación y Diseño</a></li>
+                                    <li><a class="dropdown-item item-proy" href="proyectos-coord.html">Proyectos</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item"><a class="nav-link active" href="eventos.html">Próximos Eventos</a></li>
+                            <li class="nav-item"><a class="nav-link" href="cursos.html">Cursos</a></li>
+                            <li class="nav-item"><a class="nav-link" href="proyectos-actuales.html">Proyectos y Programas</a></li>
+                            <li class="nav-item"><a class="nav-link" href="contact.html">Contacto</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <section class="hero-section hero-short hero-eventos d-flex justify-content-center align-items-center">
+                <div class="container position-relative">
+                    <div class="row align-items-center">
+                        <div class="col-12 text-center reveal reveal-down">
+                            <h1 class="text-white mb-4">Nuestros Eventos</h1>
+                            <p class="fs-5" style="color: #ffffff !important; opacity: 0.95;">Acompáñanos en nuestras actividades, talleres y congresos diseñados para impulsar la Ingeniería en Sistemas Biomédicos.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <svg viewBox="0 0 1962 178" xmlns="http://www.w3.org/2000/svg" style="position: absolute; bottom: -1px; left: 0; width: 100%; z-index: 1; transform: rotate(180deg); pointer-events: none;">
+                    <path fill="#f4f1e9" d="M 0 114 C 118.5 114 118.5 167 237 167 L 237 167 L 237 0 L 0 0 Z"></path> 
+                    <path fill="#f4f1e9" d="M 236 167 C 373 167 373 128 510 128 L 510 128 L 510 0 L 236 0 Z"></path> 
+                    <path fill="#f4f1e9" d="M 509 128 C 607 128 607 153 705 153 L 705 153 L 705 0 L 509 0 Z"></path>
+                    <path fill="#f4f1e9" d="M 704 153 C 812 153 812 113 920 113 L 920 113 L 920 0 L 704 0 Z"></path>
+                    <path fill="#f4f1e9" d="M 919 113 C 1048.5 113 1048.5 148 1178 148 L 1178 148 L 1178 0 L 919 0 Z"></path>
+                    <path fill="#f4f1e9" d="M 1177 148 C 1359.5 148 1359.5 129 1542 129 L 1542 129 L 1542 0 L 1177 0 Z"></path>
+                    <path fill="#f4f1e9" d="M 1541 129 C 1751.5 129 1751.5 138 1962 138 L 1962 138 L 1962 0 L 1541 0 Z"></path>
+                </svg>
+            </section>
+
+            <section class="section-padding bg-dorado-transparent pb-5" style="padding-top: 80px;">
+                <div class="container">
+                    <div class="row mb-4 text-center reveal reveal-up">
+                        <div class="col-12">
+                            <h2 style="color: var(--main-azul-marino);">Eventos <span style="color: var(--main-dorado);">Próximos</span></h2>
+                            <p class="text-muted fs-5">Prepara tu agenda y sé parte de lo que viene.</p>
+                        </div>
+                    </div>
+
+                    <div class="row reveal reveal-up delay-1">
+                        <div class="col-12 position-relative">
+                            
+                            <div id="upcomingEventsCarousel" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#upcomingEventsCarousel" data-bs-slide-to="0" class="active" aria-current="true"></button>
+                                    <button type="button" data-bs-target="#upcomingEventsCarousel" data-bs-slide-to="1"></button>
+                                    <button type="button" data-bs-target="#upcomingEventsCarousel" data-bs-slide-to="2"></button>
+                                    <button type="button" data-bs-target="#upcomingEventsCarousel" data-bs-slide-to="3"></button>
+                                </div>
+
+                                <div class="carousel-inner p-2">
+                                    
+                                    <div class="carousel-item active">
+                                        <div class="row g-0 carousel-item-custom bg-soft-mint">
+                                            <div class="col-lg-6 h-100">
+                                                <div class="carousel-img-wrap"><img src="images/event-biohack.webp" alt="BioHack CCM"></div>
+                                            </div>
+                                            <div class="col-lg-6 h-100">
+                                                <div class="carousel-content">
+                                                    <span class="event-badge badge-biohack"><i class="bi bi-rocket-takeoff me-2"></i>Fase Presencial</span>
+                                                    <h3 class="event-title display-6 mb-3">BioHack CCM</h3>
+                                                    <div class="event-date mb-3 fs-5"><i class="bi bi-calendar-event text-success"></i> 27 y 28 de marzo de 2026</div>
+                                                    <p class="text-muted"><strong>¿Qué es BioHack CCM?</strong> Es una competencia de innovación biomédica que impulsa a estudiantes a desarrollar soluciones tecnológicas de alto impacto.</p>
+                                                    <div class="alert mt-3 border-0 bg-white shadow-sm" style="color: #198754; font-size: 0.9rem;">
+                                                        <strong>Nota:</strong> SOSBI envió un equipo a participar y, hasta el momento, han pasado a la fase presencial. ¡Mucho éxito!
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="carousel-item">
+                                        <div class="row g-0 carousel-item-custom bg-soft-orange">
+                                            <div class="col-lg-6 order-lg-2 h-100">
+                                                <div class="carousel-img-wrap"><img src="images/event-hela.webp" alt="Congreso HELA 2026"></div>
+                                            </div>
+                                            <div class="col-lg-6 order-lg-1 h-100">
+                                                <div class="carousel-content">
+                                                    <span class="event-badge badge-congreso"><i class="bi bi-globe me-2"></i>Congreso</span>
+                                                    <h3 class="event-title display-6 mb-2">Congreso HELA 2026</h3>
+                                                    <h5 class="text-muted mb-4">– Décima Edición –</h5>
+                                                    <div class="event-date mb-2 fs-5"><i class="bi bi-calendar-event" style="color: #fd7e14;"></i> 20 al 24 de abril de 2026</div>
+                                                    <div class="event-location mb-4 fs-5"><i class="bi bi-geo-alt"></i> Hermosillo, Sonora</div>
+                                                    <blockquote class="blockquote border-start border-4 ps-3 mb-4" style="border-color: #fd7e14 !important;">
+                                                        <p class="fst-italic fs-5 text-muted">"La ingeniería que transforma vidas existe: descúbrela en esta semana de ingeniería Biomédica."</p>
+                                                    </blockquote>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="carousel-item">
+                                        <div class="row g-0 carousel-item-custom bg-soft-blue">
+                                            <div class="col-lg-6 h-100">
+                                                <div class="carousel-img-wrap"><img src="images/event-feria.webp" alt="Feria"></div>
+                                            </div>
+                                            <div class="col-lg-6 h-100">
+                                                <div class="carousel-content">
+                                                    <span class="event-badge badge-feria"><i class="bi bi-people me-2"></i>Feria Universitaria</span>
+                                                    <h3 class="event-title display-6 mb-3">Feria de Agrupaciones</h3>
+                                                    <div class="event-date mb-2 fs-5"><i class="bi bi-calendar-event text-primary"></i> 28 y 29 de abril de 2026</div>
+                                                    <div class="event-location mb-4 fs-5"><i class="bi bi-geo-alt"></i> Facultad de Ingeniería</div>
+                                                    <p class="text-muted fs-5">Estaremos presentes en la tradicional feria de la Facultad de Ingeniería. Acércate a nuestro stand, conoce nuestros proyectos y cómo integrarte a nuestro equipo.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="carousel-item">
+                                        <div class="row g-0 carousel-item-custom bg-soft-orange">
+                                            <div class="col-lg-6 order-lg-2 h-100">
+                                                <div class="carousel-img-wrap"><img src="images/event-cnib.webp" alt="CNIB 2026"></div>
+                                            </div>
+                                            <div class="col-lg-6 order-lg-1 h-100">
+                                                <div class="carousel-content">
+                                                    <span class="event-badge badge-congreso"><i class="bi bi-hospital me-2"></i>Congreso Nacional</span>
+                                                    <h3 class="event-title display-6 mb-2">CNIB 2026</h3>
+                                                    <h5 class="text-muted mb-3">XLIX Congreso Nacional</h5>
+                                                    <div class="event-date mb-2 fs-5"><i class="bi bi-calendar-event" style="color: #fd7e14;"></i> Próximamente</div>
+                                                    <div class="event-location mb-3 fs-5"><i class="bi bi-geo-alt"></i> Oaxaca</div>
+                                                    <p class="text-dark fw-bold mb-2">Ingeniería biomédica potenciando la transformación digital en salud.</p>
+                                                    <div class="row mt-3">
+                                                        <div class="col-6"><ul class="feature-list mt-0"><li>Expo IB</li><li>2° CLASD</li></ul></div>
+                                                        <div class="col-6"><ul class="feature-list mt-0"><li>IV CLIC</li><li>Trabajos libres</li></ul></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <button class="carousel-control-prev" type="button" data-bs-target="#upcomingEventsCarousel" data-bs-slide="prev" style="left: -20px;">
+                                    <span class="custom-control-icon"><i class="bi bi-chevron-left"></i></span>
+                                    <span class="visually-hidden">Anterior</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#upcomingEventsCarousel" data-bs-slide="next" style="right: -20px;">
+                                    <span class="custom-control-icon"><i class="bi bi-chevron-right"></i></span>
+                                    <span class="visually-hidden">Siguiente</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-padding bg-white pb-5">
+                <div class="container">
+                    <div class="row mb-5 text-center reveal reveal-up">
+                        <div class="col-12">
+                            <h2 style="color: var(--main-azul-marino);">Eventos <span style="color: var(--main-dorado);">Recientes</span></h2>
+                            <p class="text-muted">Un vistazo a nuestras últimas actividades y logros.</p>
+                        </div>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-lg-4 col-md-6 col-12 reveal reveal-up">
+                            <div class="event-card bg-card-1">
+                                <img src="images/event-jornada.webp" class="event-card-img" alt="Jornada Universitaria">
+                                <div class="event-card-body">
+                                    <span class="text-warning small fw-bold mb-2 d-block"><i class="bi bi-check-circle-fill"></i> Concluido</span>
+                                    <h4 class="event-title">Jornada de Orientación Vocacional</h4>
+                                    <div class="event-description-fixed">
+                                        Participamos con un stand y como guías. Recibimos visitas de ENP y CCH para informar sobre el impacto de la carrera.
+                                    </div>
+                                    <div class="event-date"><i class="bi bi-calendar-event"></i> 20 de marzo de 2026</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-12 reveal reveal-up delay-1">
+                            <div class="event-card bg-card-3">
+                                <img src="images/event-taller.webp" class="event-card-img" alt="Taller de Egresados">
+                                <div class="event-card-body">
+                                    <span class="text-success small fw-bold mb-2 d-block"><i class="bi bi-check-circle-fill"></i> Concluido</span>
+                                    <h4 class="event-title">Taller Seminario de Egresados</h4>
+                                    <div class="event-description-fixed">
+                                        Impartimos un taller a alumnos de primeros semestres sobre los módulos actuales y opciones para crecer su CV.
+                                    </div>
+                                    <div class="event-date"><i class="bi bi-calendar-event"></i> 12 de marzo de 2026</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-12 reveal reveal-up delay-2">
+                            <div class="event-card bg-card-2">
+                                <img src="images/event-protesta.webp" class="event-card-img" alt="Toma de Protesta">
+                                <div class="event-card-body">
+                                    <span class="text-secondary small fw-bold mb-2 d-block"><i class="bi bi-check-circle-fill"></i> Concluido</span>
+                                    <h4 class="event-title">Toma de Protesta SOSBI</h4>
+                                    <div class="event-description-fixed">
+                                        Se llevó a cabo la ceremonia oficial de la toma de protesta de la mesa actual de la Sociedad de Alumnos.
+                                    </div>
+                                    <div class="event-date"><i class="bi bi-calendar-event"></i> 5 de marzo de 2026</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="site-footer pt-5">
+            <div class="container pb-4">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0 reveal reveal-up">
+                        <a class="navbar-brand d-flex align-items-center mb-3" href="index.html">
+                            <span class="navbar-brand-text text-white fs-3">SOSBI <small style="color: var(--main-dorado) !important;">UNAM</small></span>
+                        </a>
+                        <p class="text-white-50">Innovación tecnológica para la salud.</p>
+                    </div>
+
+                    <div class="col-lg-5 col-md-6 col-12 mb-4 mb-lg-0 reveal reveal-up delay-1">
+                        <h5 class="site-footer-title mb-3 text-white">Contacto y Ubicación</h5>
+                        <p class="text-white-50 mb-2 lh-base">
+                            <i class="bi bi-geo-alt-fill me-2" style="color: var(--main-dorado);"></i>
+                            Universidad Nacional Autónoma de México<br>
+                            <span class="ms-4">Anexo de la Facultad de Ingeniería | Edificio X, 2° Piso</span>
+                        </p>
+                        <p class="text-white-50 mb-2">
+                            <i class="bi bi-telephone-fill me-2" style="color: var(--main-dorado);"></i> 
+                            +52 (55) 7140 6007 | +52 (55) 8023 0212
+                        </p>
+                        <p class="text-white-50 mb-0">
+                            <i class="bi bi-envelope-fill me-2" style="color: var(--main-dorado);"></i> 
+                            sosbi.unam@gmail.com
+                        </p>
+                    </div>
+
+                    <div class="col-lg-3 col-md-12 col-12 text-lg-end mt-4 mt-lg-0 d-flex flex-column align-items-lg-end justify-content-center reveal reveal-up delay-2">
+                        <h5 class="site-footer-title mb-3 text-white">Síguenos</h5>
+                        <ul class="social-icon justify-content-lg-end mb-4">
+                            <li class="social-icon-item"><a href="https://instagram.com/sosbifiunam" target="_blank" class="social-icon-link bi-instagram bg-dorado"></a></li>
+                            <li class="social-icon-item"><a href="https://www.linkedin.com/company/sosbi-fiunam/" target="_blank" class="social-icon-link bi-linkedin bg-dorado"></a></li>
+                            <li class="social-icon-item"><a href="https://www.tiktok.com/@sosbifiunam" target="_blank" class="social-icon-link bi-tiktok bg-dorado"></a></li>
+                        </ul>
+                        <div class="copyright-wrap d-flex align-items-center justify-content-lg-end">
+                            <p class="copyright-text text-white-50 mb-0">Copyright © 2026 SOSBI UNAM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="var(--main-dorado)" fill-opacity="0.1" d="M0,224L34.3,192C68.6,160,137,96,206,90.7C274.3,85,343,139,411,144C480,149,549,107,617,122.7C685.7,139,754,213,823,240C891.4,267,960,245,1029,224C1097.1,203,1166,181,1234,160C1302.9,139,1371,117,1406,106.7L1440,96L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path></svg>
+        </footer>
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/animated-headline.js"></script>
+        <script src="js/modernizr.js"></script>
+        <script src="js/custom.js"></script>
+    </body>
+</html>
