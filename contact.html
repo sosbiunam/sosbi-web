@@ -18,7 +18,6 @@
         <link href="css/coordinaciones.css" rel="stylesheet">
 
         <style>
-            /* Héroe de Contacto: Azul dominante y Dorado intenso para evitar que se vea amarillo */
             .hero-contact {
                 background: linear-gradient(135deg, rgba(23, 55, 95, 0.95) 0%, rgba(23, 55, 95, 0.85) 55%, rgba(162, 122, 17, 0.9) 100%), url('images/cia.webp') !important;
                 background-size: cover !important; 
@@ -26,7 +25,6 @@
                 background-attachment: fixed !important;
             }
 
-            /* Estilos del Formulario Moderno (Toques Dorados) */
             .contact-form-card {
                 background: #ffffff;
                 border-radius: 20px;
@@ -82,7 +80,6 @@
                 box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             }
 
-            /* Corrección de Redes Sociales al Dorado Institucional */
             .bg-dorado {
                 background-color: var(--main-dorado) !important;
                 border: none !important;
@@ -189,8 +186,7 @@
                                     <input type="hidden" name="_captcha" value="false">
                                     <input type="hidden" name="_subject" value="¡Nuevo mensaje desde la página web de SOSBI!">
                                     <input type="text" name="_honey" style="display:none">
-                                    
-                                    <input type="hidden" name="_cc" id="cc-email" disabled>
+                                    <input type="hidden" name="_cc" id="cc-email">
 
                                     <div class="row">
                                         <div class="col-md-6 mb-4">
@@ -234,7 +230,7 @@
                     <div class="row">
                         <div class="col-12 reveal reveal-up">
                             <div class="map-container overflow-hidden">
-                                <iframe src="https://maps.google.com/maps?q=Anexo%20de%20la%20Facultad%20de%20Ingenieria%20UNAM&t=&z=16&ie=UTF8&iwloc=&output=embed" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3765.011883584558!2d-99.1849176239103!3d19.3253241441097!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1fff40538f9b9%3A0xc6659f816a735165!2sAnexo%20de%20la%20Facultad%20de%20Ingenier%C3%ADa%2C%20UNAM!5e0!3m2!1ses-419!2smx!4v1711585000000!5m2!1ses-419!2smx" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
                         </div>
                     </div>
@@ -293,82 +289,61 @@
         <script src="js/custom.js"></script>
 
         <script>
+            // Lógica de correos secundarios
             document.getElementById('motivo-select').addEventListener('change', function() {
                 var ccField = document.getElementById('cc-email');
                 var selected = this.value;
                 var ccEmail = '';
 
-                // Asignamos el correo según la opción seleccionada
-                if (selected === 'Recursos Humanos') {
-                    ccEmail = 'rhsosbi@gmail.com';
-                } else if (selected === 'Proyectos') {
-                    ccEmail = 'proyectossosbiunam@gmail.com';
-                } else if (selected === 'Relaciones Públicas') {
-                    ccEmail = 'relacionespublicassosbi@gmail.com';
-                } else if (selected === 'Comunicación y Diseño') {
-                    ccEmail = 'comunicacionsosbi.unam@gmail.com';
-                }
+                if (selected === 'Recursos Humanos') ccEmail = 'rhsosbi@gmail.com';
+                else if (selected === 'Proyectos') ccEmail = 'proyectossosbiunam@gmail.com';
+                else if (selected === 'Relaciones Públicas') ccEmail = 'relacionespublicassosbi@gmail.com';
+                else if (selected === 'Comunicación y Diseño') ccEmail = 'comunicacionsosbi.unam@gmail.com';
 
-                // Si hay un correo asociado, lo ponemos en el campo CC y lo activamos
-                if (ccEmail !== '') {
-                    ccField.value = ccEmail;
-                    ccField.removeAttribute('disabled');
-                } else {
-                    // Si seleccionan "Duda General" no mandamos copia, solo llega a sosbi.unam@gmail.com
-                    ccField.setAttribute('disabled', 'true');
-                }
+                ccField.value = ccEmail;
             });
-        </script>
 
-        <script>
+            // Lógica de Envío AJAX Corregida
             document.getElementById('contact-form').addEventListener('submit', function(e) {
-                e.preventDefault(); // Evita que salte a la página de FormSubmit
+                e.preventDefault();
 
                 var form = this;
                 var btn = document.getElementById('submit-btn');
                 var messageBox = document.getElementById('form-message');
                 var originalBtnText = btn.innerHTML;
 
-                // Cambiamos el botón a estado "Enviando..."
-                btn.innerHTML = 'Enviando... <i class="spinner-border spinner-border-sm ms-2" role="status" aria-hidden="true"></i>';
+                btn.innerHTML = 'Enviando... <i class="spinner-border spinner-border-sm ms-2"></i>';
                 btn.disabled = true;
                 messageBox.style.display = 'none';
 
-                // Enviamos los datos en silencio mediante Fetch API
-                fetch(form.action, {
-                    method: form.method,
+                // IMPORTANTE: Se añade /ajax/ a la URL para que FormSubmit no redireccione
+                var ajaxUrl = "https://formsubmit.co/ajax/sosbi.unam@gmail.com";
+
+                fetch(ajaxUrl, {
+                    method: "POST",
                     body: new FormData(form),
-                    headers: {
-                        'Accept': 'application/json' // FormSubmit responde en JSON y no redirecciona
-                    }
-                }).then(response => {
-                    if (response.ok) {
-                        // ÉXITO
-                        messageBox.innerHTML = '¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.';
-                        messageBox.style.backgroundColor = '#d4edda';
-                        messageBox.style.color = '#155724';
-                        messageBox.style.display = 'block';
-                        form.reset(); // Limpia los campos
-                    } else {
-                        // ERROR DE FORMSUBMIT
-                        messageBox.innerHTML = 'Oops! Hubo un problema al enviar tu mensaje. Intenta de nuevo.';
-                        messageBox.style.backgroundColor = '#f8d7da';
-                        messageBox.style.color = '#721c24';
-                        messageBox.style.display = 'block';
-                    }
-                }).catch(error => {
-                    // ERROR DE RED
-                    messageBox.innerHTML = 'Error de conexión. Por favor revisa tu internet y vuelve a intentar.';
+                    headers: { 'Accept': 'application/json' }
+                })
+                .then(response => response.ok ? response.json() : Promise.reject(response))
+                .then(data => {
+                    messageBox.innerHTML = '¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.';
+                    messageBox.style.backgroundColor = '#d4edda';
+                    messageBox.style.color = '#155724';
+                    messageBox.style.display = 'block';
+                    form.reset();
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    messageBox.innerHTML = 'Hubo un problema. Por favor, asegúrate de que el sitio esté en un servidor (hosting) o activa tu correo en FormSubmit.';
                     messageBox.style.backgroundColor = '#f8d7da';
                     messageBox.style.color = '#721c24';
                     messageBox.style.display = 'block';
-                }).finally(() => {
-                    // Restauramos el botón
+                })
+                .finally(() => {
                     btn.innerHTML = originalBtnText;
                     btn.disabled = false;
                 });
             });
         </script>
-
     </body>
 </html>
