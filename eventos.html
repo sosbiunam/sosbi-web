@@ -18,6 +18,10 @@
         <link href="css/coordinaciones.css" rel="stylesheet">
 
         <style>
+            /* =========================================
+               ESTILOS ESPECÍFICOS DE LA PÁGINA EVENTOS
+               ========================================= */
+            
             /* Héroe de Eventos */
             .hero-eventos {
                 background: linear-gradient(135deg, rgba(23, 55, 95, 0.95) 0%, rgba(23, 55, 95, 0.85) 55%, rgba(162, 122, 17, 0.9) 100%), url('images/cia.webp') !important;
@@ -26,165 +30,112 @@
                 background-attachment: fixed !important;
             }
 
-            /* --- FONDO DORADO PARA LA SECCIÓN DEL CARRUSEL --- */
-            .bg-dorado-transparent {
-                background-color: rgba(162, 122, 17, 0.08); /* Dorado muy suave y transparente */
-            }
-
-            /* --- ESTILOS DEL CARRUSEL DE PRÓXIMOS EVENTOS --- */
-            .carousel-item-custom {
+            /* --- NUEVO CARRUSEL PREMIUM (TAMAÑO FIJO Y DISEÑO AVANZADO) --- */
+            .upcoming-event-card {
+                background: #fff;
                 border-radius: 20px;
                 overflow: hidden;
-                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
-                margin-bottom: 50px; 
-                border-bottom: 5px solid rgba(0,0,0,0.1);
-                height: 500px; /* Tamaño fijo */
+                box-shadow: 0 15px 35px rgba(23, 55, 95, 0.08);
+                height: 450px; /* ALTURA ESTRICTAMENTE FIJA */
+                display: flex;
+                position: relative;
+                margin-bottom: 50px; /* Espacio para los puntitos */
             }
 
-            /* Colores pastel para las tarjetas del carrusel */
-            .bg-soft-mint { background-color: #f0fbf7; } /* Verde para Biohack */
-            .bg-soft-orange { background-color: #fff4ec; } /* Naranjoso para Congresos */
-            .bg-soft-blue { background-color: #f0f8ff; } /* Azul para Feria */
-
-            /* Etiquetas de colores para cada evento */
-            .badge-biohack { background-color: #198754; color: white; } /* Verde */
-            .badge-congreso { background-color: #fd7e14; color: white; } /* Naranjoso */
-            .badge-feria { background-color: #0d6efd; color: white; } /* Azul */
-
-            .carousel-img-wrap {
-                height: 100%;
-                min-height: 100%;
+            .upcoming-event-img-col {
+                width: 45%;
+                position: relative;
             }
 
-            .carousel-img-wrap img {
+            .upcoming-event-img-col img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
             }
 
-            .carousel-content {
-                /* Padding aumentado a 5rem en los lados para que las flechas no estorben */
-                padding: 3rem 5rem;
+            .upcoming-event-content {
+                width: 55%;
+                padding: 40px 50px;
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
+                background: #ffffff;
+                position: relative;
+            }
+
+            /* Barra lateral de color dinámico para cada tarjeta */
+            .upcoming-event-content::before {
+                content: '';
+                position: absolute;
+                top: 0; left: 0;
+                width: 8px;
                 height: 100%;
+                background: var(--card-color, var(--main-dorado));
+            }
+
+            /* Insignia Flotante de Fecha sobre la imagen */
+            .floating-date-badge {
+                position: absolute;
+                top: 25px;
+                left: 25px;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(8px);
+                padding: 12px 18px;
+                border-radius: 12px;
+                text-align: center;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+                z-index: 2;
+            }
+            .badge-day { font-family: 'Montserrat', sans-serif; font-size: 1.8rem; font-weight: 900; line-height: 1; display: block; color: var(--card-color, var(--main-azul-marino)); }
+            .badge-month { font-family: 'Poppins', sans-serif; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #6c757d; margin-top: 5px; display: block;}
+
+            /* Contenedor de texto con scroll oculto para no romper el alto fijo */
+            .event-text-scroll {
                 overflow-y: auto;
-            }
-
-            @media (max-width: 991px) {
-                .carousel-item-custom {
-                    height: 750px; 
-                }
-                .carousel-img-wrap {
-                    height: 250px !important;
-                    min-height: 250px !important;
-                }
-                .carousel-content {
-                    padding: 2rem 3.5rem; /* Ajuste para móviles */
-                }
-            }
-
-            .carousel-content::-webkit-scrollbar { width: 6px; }
-            .carousel-content::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
-
-            .carousel-indicators { bottom: -50px; }
-            .carousel-indicators [data-bs-target] {
-                background-color: var(--main-azul-marino);
-                width: 12px; height: 12px; border-radius: 50%; margin: 0 6px; opacity: 0.5;
-            }
-            .carousel-indicators .active {
-                background-color: var(--main-dorado); opacity: 1; width: 30px; border-radius: 10px;
-            }
-
-            .custom-control-icon {
-                background-color: var(--main-azul-marino);
-                border-radius: 50%;
-                width: 45px; height: 45px;
-                display: flex; align-items: center; justify-content: center;
-                box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-                transition: background-color 0.3s;
-            }
-            .custom-control-icon:hover { background-color: var(--main-dorado); }
-            .custom-control-icon i { color: #fff; font-size: 1.5rem; }
-
-            /* --- ESTILOS DE LAS TARJETAS DE EVENTOS RECIENTES --- */
-            .event-card {
-                border: none;
-                border-radius: 15px;
-                overflow: hidden;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
-                height: 100%;
-                display: flex;
-                flex-direction: column;
-            }
-            .event-card:hover {
-                transform: translateY(-8px);
-                box-shadow: 0 15px 35px rgba(0,0,0,0.12);
-            }
-
-            /* Colores pastel sutiles para los eventos recientes */
-            .bg-card-1 { background-color: #fffaf0; } /* Naranja/amarillo muy suave */
-            .bg-card-2 { background-color: #f4f6f9; } /* Gris azulado suave */
-            .bg-card-3 { background-color: #f0fdf4; } /* Verde muy suave */
-
-            .event-card-img {
-                width: 100%;
-                height: 220px;
-                object-fit: cover;
-                flex-shrink: 0;
-            }
-
-            .event-card-body {
-                padding: 25px;
+                padding-right: 15px;
+                margin-bottom: 1.5rem;
                 flex-grow: 1;
-                display: flex;
-                flex-direction: column;
-            }
-
-            .event-description-fixed {
-                height: 100px; 
-                overflow-y: auto;
-                margin-bottom: 15px;
-                font-size: 0.9rem;
                 color: #555;
             }
-            .event-description-fixed::-webkit-scrollbar { width: 4px; }
-            .event-description-fixed::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
+            .event-text-scroll::-webkit-scrollbar { width: 4px; }
+            .event-text-scroll::-webkit-scrollbar-thumb { background: #dee2e6; border-radius: 4px; }
 
-            .event-badge {
-                display: inline-block;
-                padding: 5px 15px;
-                border-radius: 20px;
-                font-size: 0.8rem;
-                font-weight: bold;
-                margin-bottom: 15px;
-                align-self: flex-start;
+            /* Botones del carrusel */
+            .custom-carousel-control {
+                width: 50px; 
+                height: 50px;
+                background-color: var(--main-azul-marino);
+                border-radius: 50%;
+                display: flex; 
+                align-items: center; 
+                justify-content: center;
+                transition: all 0.3s;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            }
+            .custom-carousel-control:hover { background-color: var(--main-dorado); transform: scale(1.1); }
+            .custom-carousel-control i { color: #fff; font-size: 1.3rem; }
+            
+            .carousel-indicators { bottom: -10px; }
+            .carousel-indicators [data-bs-target] {
+                background-color: var(--main-azul-marino); width: 10px; height: 10px; border-radius: 50%; margin: 0 6px; opacity: 0.3; transition: all 0.3s ease;
+            }
+            .carousel-indicators .active { background-color: var(--main-dorado); opacity: 1; width: 30px; border-radius: 10px; }
+
+            /* Adaptación a tablets y móviles (Carrusel) */
+            @media (max-width: 991px) {
+                .upcoming-event-card { flex-direction: column; height: 650px; }
+                .upcoming-event-img-col { width: 100%; height: 40%; }
+                .upcoming-event-content { width: 100%; height: 60%; padding: 30px 25px; }
+                .upcoming-event-content::before { width: 100%; height: 6px; top: 0; left: 0; }
             }
 
-            .event-title {
-                color: var(--main-azul-marino);
-                font-weight: 700;
-                font-size: 1.2rem;
-                margin-bottom: 10px;
-                font-family: 'Montserrat', sans-serif;
+            /* FIX: Ajuste exclusivo para las tarjetas de Eventos Recientes en celulares */
+            @media (max-width: 768px) {
+                .ann-card-img-wrap {
+                    height: 240px !important; /* Da más altura a la imagen en celulares para evitar recortes extremos */
+                }
             }
 
-            .event-date {
-                color: #444;
-                font-weight: 600;
-                font-size: 0.9rem;
-                margin-top: auto;
-                display: flex;
-                align-items: center;
-                gap: 8px;
-            }
-
-            .feature-list { list-style: none; padding-left: 0; margin-top: 15px; }
-            .feature-list li { position: relative; padding-left: 25px; margin-bottom: 8px; font-size: 0.9rem; color: #555; }
-            .feature-list li::before { content: '✓'; position: absolute; left: 0; color: #333; font-weight: bold; }
-
+            /* Corrección de Redes Sociales al Dorado Institucional (Del Footer) */
             .bg-dorado { background-color: var(--main-dorado) !important; border: none !important; }
             .bg-dorado:hover { background-color: #8c6910 !important; }
         </style>
@@ -234,22 +185,23 @@
                 </div>
                 
                 <svg viewBox="0 0 1962 178" xmlns="http://www.w3.org/2000/svg" style="position: absolute; bottom: -1px; left: 0; width: 100%; z-index: 1; transform: rotate(180deg); pointer-events: none;">
-                    <path fill="#f4f1e9" d="M 0 114 C 118.5 114 118.5 167 237 167 L 237 167 L 237 0 L 0 0 Z"></path> 
-                    <path fill="#f4f1e9" d="M 236 167 C 373 167 373 128 510 128 L 510 128 L 510 0 L 236 0 Z"></path> 
-                    <path fill="#f4f1e9" d="M 509 128 C 607 128 607 153 705 153 L 705 153 L 705 0 L 509 0 Z"></path>
-                    <path fill="#f4f1e9" d="M 704 153 C 812 153 812 113 920 113 L 920 113 L 920 0 L 704 0 Z"></path>
-                    <path fill="#f4f1e9" d="M 919 113 C 1048.5 113 1048.5 148 1178 148 L 1178 148 L 1178 0 L 919 0 Z"></path>
-                    <path fill="#f4f1e9" d="M 1177 148 C 1359.5 148 1359.5 129 1542 129 L 1542 129 L 1542 0 L 1177 0 Z"></path>
-                    <path fill="#f4f1e9" d="M 1541 129 C 1751.5 129 1751.5 138 1962 138 L 1962 138 L 1962 0 L 1541 0 Z"></path>
+                    <path fill="#F4F7FC" d="M 0 114 C 118.5 114 118.5 167 237 167 L 237 167 L 237 0 L 0 0 Z"></path> 
+                    <path fill="#F4F7FC" d="M 236 167 C 373 167 373 128 510 128 L 510 128 L 510 0 L 236 0 Z"></path> 
+                    <path fill="#F4F7FC" d="M 509 128 C 607 128 607 153 705 153 L 705 153 L 705 0 L 509 0 Z"></path>
+                    <path fill="#F4F7FC" d="M 704 153 C 812 153 812 113 920 113 L 920 113 L 920 0 L 704 0 Z"></path>
+                    <path fill="#F4F7FC" d="M 919 113 C 1048.5 113 1048.5 148 1178 148 L 1178 148 L 1178 0 L 919 0 Z"></path>
+                    <path fill="#F4F7FC" d="M 1177 148 C 1359.5 148 1359.5 129 1542 129 L 1542 129 L 1542 0 L 1177 0 Z"></path>
+                    <path fill="#F4F7FC" d="M 1541 129 C 1751.5 129 1751.5 138 1962 138 L 1962 138 L 1962 0 L 1541 0 Z"></path>
                 </svg>
             </section>
 
-            <section class="section-padding bg-dorado-transparent pb-5" style="padding-top: 80px;">
+            <section class="section-padding pb-5" style="background-color: var(--sosbi-bg); padding-top: 80px;">
                 <div class="container">
-                    <div class="row mb-4 text-center reveal reveal-up">
+                    <div class="row mb-5 text-center reveal reveal-up">
                         <div class="col-12">
-                            <h2 style="color: var(--main-azul-marino);">Eventos <span style="color: var(--main-dorado);">Próximos</span></h2>
-                            <p class="text-muted fs-5">Prepara tu agenda y sé parte de lo que viene.</p>
+                            <p class="section-eyebrow">Agenda de Actividades</p>
+                            <h2 class="section-title mb-0">Eventos <span style="color:var(--sosbi-teal)">Próximos</span></h2>
+                            <p class="text-muted fs-5 mt-3">Prepara tu agenda y sé parte de lo que viene.</p>
                         </div>
                     </div>
 
@@ -264,81 +216,106 @@
                                     <button type="button" data-bs-target="#upcomingEventsCarousel" data-bs-slide-to="3"></button>
                                 </div>
 
-                                <div class="carousel-inner p-2">
+                                <div class="carousel-inner pb-5 px-lg-4">
                                     
                                     <div class="carousel-item active">
-                                        <div class="row g-0 carousel-item-custom bg-soft-mint">
-                                            <div class="col-lg-6 h-100">
-                                                <div class="carousel-img-wrap"><img src="images/event-biohack.webp" alt="BioHack CCM"></div>
+                                        <div class="upcoming-event-card" style="--card-color: var(--contrast-turquesa-fuerte);">
+                                            <div class="upcoming-event-img-col">
+                                                <img src="images/event-biohack.webp" alt="BioHack CCM">
+                                                <div class="floating-date-badge">
+                                                    <span class="badge-day">27</span>
+                                                    <span class="badge-month">Marzo</span>
+                                                </div>
                                             </div>
-                                            <div class="col-lg-6 h-100">
-                                                <div class="carousel-content">
-                                                    <span class="event-badge badge-biohack"><i class="bi bi-rocket-takeoff me-2"></i>Fase Presencial</span>
-                                                    <h3 class="event-title display-6 mb-3">BioHack CCM</h3>
-                                                    <div class="event-date mb-3 fs-5"><i class="bi bi-calendar-event text-success"></i> 27 y 28 de marzo de 2026</div>
-                                                    <p class="text-muted"><strong>¿Qué es BioHack CCM?</strong> Es una competencia de innovación biomédica que impulsa a estudiantes a desarrollar soluciones tecnológicas de alto impacto.</p>
-                                                    <div class="alert mt-3 border-0 bg-white shadow-sm" style="color: #198754; font-size: 0.9rem;">
-                                                        <strong>Nota:</strong> SOSBI envió un equipo a participar y, hasta el momento, han pasado a la fase presencial. ¡Mucho éxito!
+                                            <div class="upcoming-event-content">
+                                                <span class="ann-card-type type-novedad mb-3">Fase Presencial</span>
+                                                <h3 style="color: var(--main-azul-marino); font-family: var(--font-display); font-weight: 800;">BioHack CCM</h3>
+                                                <div class="event-text-scroll mt-2">
+                                                    <p><strong>¿Qué es BioHack CCM?</strong> Es una competencia de innovación biomédica que impulsa a estudiantes a desarrollar soluciones tecnológicas de alto impacto.</p>
+                                                    <div class="alert border-0 mt-3 p-3" style="background-color: rgba(5, 128, 154, 0.08); color: var(--contrast-turquesa-fuerte); border-radius: 8px;">
+                                                        <strong>Nota:</strong> SOSBI envió un equipo a participar y, hasta el momento, han pasado a la fase presencial. ¡Mucho éxito a nuestros representantes!
                                                     </div>
+                                                </div>
+                                                <div class="mt-auto d-flex align-items-center text-muted fw-bold">
+                                                    <i class="bi bi-geo-alt-fill me-2 fs-5" style="color: var(--contrast-turquesa-fuerte);"></i> CCM, Ciudad de México
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="carousel-item">
-                                        <div class="row g-0 carousel-item-custom bg-soft-orange">
-                                            <div class="col-lg-6 order-lg-2 h-100">
-                                                <div class="carousel-img-wrap"><img src="images/event-hela.webp" alt="Congreso HELA 2026"></div>
+                                        <div class="upcoming-event-card" style="--card-color: var(--main-dorado);">
+                                            <div class="upcoming-event-img-col">
+                                                <img src="images/event-hela.webp" alt="Congreso HELA 2026">
+                                                <div class="floating-date-badge">
+                                                    <span class="badge-day">20</span>
+                                                    <span class="badge-month">Abril</span>
+                                                </div>
                                             </div>
-                                            <div class="col-lg-6 order-lg-1 h-100">
-                                                <div class="carousel-content">
-                                                    <span class="event-badge badge-congreso"><i class="bi bi-globe me-2"></i>Congreso</span>
-                                                    <h3 class="event-title display-6 mb-2">Congreso HELA 2026</h3>
-                                                    <h5 class="text-muted mb-4">– Décima Edición –</h5>
-                                                    <div class="event-date mb-2 fs-5"><i class="bi bi-calendar-event" style="color: #fd7e14;"></i> 20 al 24 de abril de 2026</div>
-                                                    <div class="event-location mb-4 fs-5"><i class="bi bi-geo-alt"></i> Hermosillo, Sonora</div>
-                                                    <blockquote class="blockquote border-start border-4 ps-3 mb-4" style="border-color: #fd7e14 !important;">
-                                                        <p class="fst-italic fs-5 text-muted">"La ingeniería que transforma vidas existe: descúbrela en esta semana de ingeniería Biomédica."</p>
+                                            <div class="upcoming-event-content">
+                                                <span class="ann-card-type type-evento mb-3">Congreso</span>
+                                                <h3 style="color: var(--main-azul-marino); font-family: var(--font-display); font-weight: 800;">Congreso HELA 2026</h3>
+                                                <h6 class="text-muted text-uppercase tracking-wider mb-3">– Décima Edición –</h6>
+                                                <div class="event-text-scroll">
+                                                    <blockquote class="blockquote border-start border-3 ps-3 mb-3" style="border-color: var(--main-dorado) !important;">
+                                                        <p class="fst-italic fs-6 text-muted">"La ingeniería que transforma vidas existe: descúbrela en esta semana de ingeniería Biomédica."</p>
                                                     </blockquote>
+                                                    <p>Un evento diseñado para compartir conocimientos y experiencias con grandes exponentes de la ingeniería en salud.</p>
+                                                </div>
+                                                <div class="mt-auto d-flex flex-column gap-2 text-muted fw-bold">
+                                                    <span><i class="bi bi-geo-alt-fill me-2 fs-5" style="color: var(--main-dorado);"></i> Hermosillo, Sonora</span>
+                                                    <span><i class="bi bi-calendar-event me-2 fs-5" style="color: var(--main-dorado);"></i> 20 al 24 de Abril</span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="carousel-item">
-                                        <div class="row g-0 carousel-item-custom bg-soft-blue">
-                                            <div class="col-lg-6 h-100">
-                                                <div class="carousel-img-wrap"><img src="images/event-feria.webp" alt="Feria"></div>
+                                        <div class="upcoming-event-card" style="--card-color: var(--main-azul-marino);">
+                                            <div class="upcoming-event-img-col">
+                                                <img src="images/event-feria.webp" alt="Feria de Agrupaciones">
+                                                <div class="floating-date-badge">
+                                                    <span class="badge-day">28</span>
+                                                    <span class="badge-month">Abril</span>
+                                                </div>
                                             </div>
-                                            <div class="col-lg-6 h-100">
-                                                <div class="carousel-content">
-                                                    <span class="event-badge badge-feria"><i class="bi bi-people me-2"></i>Feria Universitaria</span>
-                                                    <h3 class="event-title display-6 mb-3">Feria de Agrupaciones</h3>
-                                                    <div class="event-date mb-2 fs-5"><i class="bi bi-calendar-event text-primary"></i> 28 y 29 de abril de 2026</div>
-                                                    <div class="event-location mb-4 fs-5"><i class="bi bi-geo-alt"></i> Facultad de Ingeniería</div>
-                                                    <p class="text-muted fs-5">Estaremos presentes en la tradicional feria de la Facultad de Ingeniería. Acércate a nuestro stand, conoce nuestros proyectos y cómo integrarte a nuestro equipo.</p>
+                                            <div class="upcoming-event-content">
+                                                <span class="ann-card-type type-proyecto mb-3">Feria Universitaria</span>
+                                                <h3 style="color: var(--main-azul-marino); font-family: var(--font-display); font-weight: 800;">Feria de Agrupaciones</h3>
+                                                <div class="event-text-scroll mt-2">
+                                                    <p>Estaremos presentes en la tradicional feria de la Facultad de Ingeniería. Acércate a nuestro stand, conoce nuestros proyectos y descubre cómo integrarte a nuestro equipo multidisciplinario.</p>
+                                                </div>
+                                                <div class="mt-auto d-flex flex-column gap-2 text-muted fw-bold">
+                                                    <span><i class="bi bi-geo-alt-fill me-2 fs-5" style="color: var(--main-azul-marino);"></i> Facultad de Ingeniería</span>
+                                                    <span><i class="bi bi-calendar-event me-2 fs-5" style="color: var(--main-azul-marino);"></i> 28 y 29 de Abril</span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="carousel-item">
-                                        <div class="row g-0 carousel-item-custom bg-soft-orange">
-                                            <div class="col-lg-6 order-lg-2 h-100">
-                                                <div class="carousel-img-wrap"><img src="images/event-cnib.webp" alt="CNIB 2026"></div>
+                                        <div class="upcoming-event-card" style="--card-color: var(--contrast-turquesa-claro);">
+                                            <div class="upcoming-event-img-col">
+                                                <img src="images/event-cnib.webp" alt="CNIB 2026">
+                                                <div class="floating-date-badge">
+                                                    <span class="badge-day">14</span>
+                                                    <span class="badge-month">Octubre</span>
+                                                </div>
                                             </div>
-                                            <div class="col-lg-6 order-lg-1 h-100">
-                                                <div class="carousel-content">
-                                                    <span class="event-badge badge-congreso"><i class="bi bi-hospital me-2"></i>Congreso Nacional</span>
-                                                    <h3 class="event-title display-6 mb-2">CNIB 2026</h3>
-                                                    <h5 class="text-muted mb-3">XLIX Congreso Nacional</h5>
-                                                    <div class="event-date mb-2 fs-5"><i class="bi bi-calendar-event" style="color: #fd7e14;"></i> Próximamente</div>
-                                                    <div class="event-location mb-3 fs-5"><i class="bi bi-geo-alt"></i> Oaxaca</div>
+                                            <div class="upcoming-event-content">
+                                                <span class="ann-card-type type-curso mb-3" style="background: rgba(52,166,170,0.12); color: var(--contrast-turquesa-claro);">Congreso Nacional</span>
+                                                <h3 style="color: var(--main-azul-marino); font-family: var(--font-display); font-weight: 800;">CNIB 2026</h3>
+                                                <h6 class="text-muted text-uppercase tracking-wider mb-3">XLIX Congreso Nacional</h6>
+                                                <div class="event-text-scroll">
                                                     <p class="text-dark fw-bold mb-2">Ingeniería biomédica potenciando la transformación digital en salud.</p>
-                                                    <div class="row mt-3">
-                                                        <div class="col-6"><ul class="feature-list mt-0"><li>Expo IB</li><li>2° CLASD</li></ul></div>
-                                                        <div class="col-6"><ul class="feature-list mt-0"><li>IV CLIC</li><li>Trabajos libres</li></ul></div>
-                                                    </div>
+                                                    <ul class="text-muted fs-6 mb-0" style="padding-left: 1.2rem;">
+                                                        <li>Expo IB & Trabajos libres</li>
+                                                        <li>2° CLASD & IV CLIC</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="mt-auto d-flex flex-column gap-2 text-muted fw-bold">
+                                                    <span><i class="bi bi-geo-alt-fill me-2 fs-5" style="color: var(--contrast-turquesa-claro);"></i> Oaxaca</span>
+                                                    <span><i class="bi bi-calendar-event me-2 fs-5" style="color: var(--contrast-turquesa-claro);"></i> 14 al 17 de Octubre de 2026</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -346,15 +323,16 @@
 
                                 </div>
 
-                                <button class="carousel-control-prev" type="button" data-bs-target="#upcomingEventsCarousel" data-bs-slide="prev" style="left: -20px;">
-                                    <span class="custom-control-icon"><i class="bi bi-chevron-left"></i></span>
+                                <button class="carousel-control-prev d-none d-lg-flex" type="button" data-bs-target="#upcomingEventsCarousel" data-bs-slide="prev" style="left: -20px;">
+                                    <span class="custom-carousel-control"><i class="bi bi-chevron-left"></i></span>
                                     <span class="visually-hidden">Anterior</span>
                                 </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#upcomingEventsCarousel" data-bs-slide="next" style="right: -20px;">
-                                    <span class="custom-control-icon"><i class="bi bi-chevron-right"></i></span>
+                                <button class="carousel-control-next d-none d-lg-flex" type="button" data-bs-target="#upcomingEventsCarousel" data-bs-slide="next" style="right: -20px;">
+                                    <span class="custom-carousel-control"><i class="bi bi-chevron-right"></i></span>
                                     <span class="visually-hidden">Siguiente</span>
                                 </button>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -364,53 +342,71 @@
                 <div class="container">
                     <div class="row mb-5 text-center reveal reveal-up">
                         <div class="col-12">
-                            <h2 style="color: var(--main-azul-marino);">Eventos <span style="color: var(--main-dorado);">Recientes</span></h2>
-                            <p class="text-muted">Un vistazo a nuestras últimas actividades y logros.</p>
+                            <p class="section-eyebrow">Nuestro Historial</p>
+                            <h2 class="section-title mb-0">Eventos <span style="color:var(--sosbi-teal)">Recientes</span></h2>
+                            <p class="text-muted mt-3 fs-5">Un vistazo a nuestras últimas actividades y logros.</p>
                         </div>
                     </div>
 
-                    <div class="row g-4">
+                    <div class="row g-4 justify-content-center">
+                        
                         <div class="col-lg-4 col-md-6 col-12 reveal reveal-up">
-                            <div class="event-card bg-card-1">
-                                <img src="images/event-jornada.webp" class="event-card-img" alt="Jornada Universitaria">
-                                <div class="event-card-body">
-                                    <span class="text-warning small fw-bold mb-2 d-block"><i class="bi bi-check-circle-fill"></i> Concluido</span>
-                                    <h4 class="event-title">Jornada de Orientación Vocacional</h4>
-                                    <div class="event-description-fixed">
-                                        Participamos con un stand y como guías. Recibimos visitas de ENP y CCH para informar sobre el impacto de la carrera.
+                            <div class="ann-card">
+                                <div class="ann-card-img-wrap">
+                                    <img src="images/event-jornada.webp" alt="Jornada Universitaria" onerror="this.src='images/logo.webp';">
+                                </div>
+                                <div class="ann-card-accent ann-accent-gold"></div>
+                                <div class="ann-card-body">
+                                    <div>
+                                        <span class="ann-card-type" style="background: rgba(0,0,0,0.05); color: #555;"><i class="bi bi-check-circle-fill me-1"></i>Concluido</span>
+                                        <div class="ann-card-title">Jornada de Orientación Vocacional</div>
+                                        <p class="ann-card-text">Participamos con un stand y como guías. Recibimos visitas de ENP y CCH para informar sobre el impacto de la carrera en Sistemas Biomédicos.</p>
                                     </div>
-                                    <div class="event-date"><i class="bi bi-calendar-event"></i> 20 de marzo de 2026</div>
+                                    <div class="ann-card-footer">
+                                        <span class="ann-card-date"><i class="bi bi-calendar3 me-1"></i>20 de marzo de 2026</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-lg-4 col-md-6 col-12 reveal reveal-up delay-1">
-                            <div class="event-card bg-card-3">
-                                <img src="images/event-taller.webp" class="event-card-img" alt="Taller de Egresados">
-                                <div class="event-card-body">
-                                    <span class="text-success small fw-bold mb-2 d-block"><i class="bi bi-check-circle-fill"></i> Concluido</span>
-                                    <h4 class="event-title">Taller Seminario de Egresados</h4>
-                                    <div class="event-description-fixed">
-                                        Impartimos un taller a alumnos de primeros semestres sobre los módulos actuales y opciones para crecer su CV.
+                            <div class="ann-card">
+                                <div class="ann-card-img-wrap">
+                                    <img src="images/event-taller.webp" alt="Taller de Egresados" onerror="this.src='images/logo.webp';">
+                                </div>
+                                <div class="ann-card-accent ann-accent-teal"></div>
+                                <div class="ann-card-body">
+                                    <div>
+                                        <span class="ann-card-type" style="background: rgba(0,0,0,0.05); color: #555;"><i class="bi bi-check-circle-fill me-1"></i>Concluido</span>
+                                        <div class="ann-card-title">Taller en Seminario de Egresados</div>
+                                        <p class="ann-card-text">Impartimos un taller a alumnos de primeros semestres sobre los módulos actuales de la carrera y diversas opciones para comenzar a crecer su CV.</p>
                                     </div>
-                                    <div class="event-date"><i class="bi bi-calendar-event"></i> 12 de marzo de 2026</div>
+                                    <div class="ann-card-footer">
+                                        <span class="ann-card-date"><i class="bi bi-calendar3 me-1"></i>12 de marzo de 2026</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-lg-4 col-md-6 col-12 reveal reveal-up delay-2">
-                            <div class="event-card bg-card-2">
-                                <img src="images/event-protesta.webp" class="event-card-img" alt="Toma de Protesta">
-                                <div class="event-card-body">
-                                    <span class="text-secondary small fw-bold mb-2 d-block"><i class="bi bi-check-circle-fill"></i> Concluido</span>
-                                    <h4 class="event-title">Toma de Protesta SOSBI</h4>
-                                    <div class="event-description-fixed">
-                                        Se llevó a cabo la ceremonia oficial de la toma de protesta de la mesa actual de la Sociedad de Alumnos.
+                            <div class="ann-card">
+                                <div class="ann-card-img-wrap">
+                                    <img src="images/event-protesta.webp" alt="Toma de Protesta" onerror="this.src='images/logo.webp';">
+                                </div>
+                                <div class="ann-card-accent ann-accent-marine"></div>
+                                <div class="ann-card-body">
+                                    <div>
+                                        <span class="ann-card-type" style="background: rgba(0,0,0,0.05); color: #555;"><i class="bi bi-check-circle-fill me-1"></i>Concluido</span>
+                                        <div class="ann-card-title">Toma de Protesta SOSBI</div>
+                                        <p class="ann-card-text">Se llevó a cabo la ceremonia oficial de la toma de protesta de la mesa actual de la Sociedad de Alumnos de Sistemas Biomédicos.</p>
                                     </div>
-                                    <div class="event-date"><i class="bi bi-calendar-event"></i> 5 de marzo de 2026</div>
+                                    <div class="ann-card-footer">
+                                        <span class="ann-card-date"><i class="bi bi-calendar3 me-1"></i>5 de marzo de 2026</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </section>

@@ -18,75 +18,6 @@
         
         <link href="css/template-sosbi.css" rel="stylesheet">
         <link href="css/coordinaciones.css" rel="stylesheet">
-
-        <style>
-            /* =========================================
-               CORRECCIÓN DE ESPACIOS PARA TABLETS Y CELULARES
-               ========================================= */
-            @media (max-width: 991px) {
-                #inicio {
-                    height: auto !important;
-                    min-height: 100vh !important;
-                    padding-top: 140px !important; 
-                    padding-bottom: 80px !important; 
-                }
-                
-                /* OCULTAMOS LA OLA EN CELULARES */
-                #inicio svg {
-                    display: none !important;
-                }
-                
-                #inicio .col-lg-6.text-center img {
-                    max-width: 60% !important;
-                    margin-top: 30px !important;
-                    margin-bottom: 20px !important;
-                }
-            }
-
-            /* =========================================
-               CORRECCIÓN ESPECÍFICA PARA NOSOTROS EN CELULAR
-               ========================================= */
-            @media (max-width: 767.98px) {
-                #intro-nosotros {
-                    position: relative;
-                    z-index: 2;
-                    padding-top: 80px !important;
-                    padding-bottom: 80px !important;
-                    overflow: visible !important;
-                }
-
-                #intro-nosotros .row.align-items-center {
-                    row-gap: 2rem;
-                }
-
-                #intro-nosotros .col-lg-6.col-12 {
-                    flex: 0 0 100%;
-                    max-width: 100%;
-                }
-
-                #intro-nosotros .col-lg-6.col-12 .row.g-3 {
-                    --bs-gutter-y: 1rem;
-                }
-
-                /* Apilamos las imágenes una sobre otra en celular */
-                #intro-nosotros .col-lg-6.col-12 .col-6,
-                #intro-nosotros .col-lg-6.col-12 .col-md-6 {
-                    flex: 0 0 100%;
-                    max-width: 100%;
-                }
-
-                /* SEPARACIÓN EXACTA ENTRE LAS DOS IMÁGENES APILADAS */
-                #intro-nosotros .col-lg-6.col-12 .col-md-6:last-child {
-                    margin-top: 20px !important; 
-                }
-
-                #intro-nosotros img {
-                    width: 100%;
-                    height: auto;
-                    display: block;
-                }
-            }
-        </style>
     </head>
     
     <body>
@@ -131,11 +62,11 @@
                 <div class="section-overlay"></div>
                 <div class="container position-relative">
                     <div class="row align-items-center">
-                        <div class="col-lg-6 col-12 mb-5 mb-lg-0 text-center text-lg-start reveal reveal-right">
+                        <div class="col-lg-6 col-12 mb-4 mb-lg-0 text-start reveal reveal-right">
                             <div class="hero-legend">
                                 Sociedad de Alumnos de Sistemas Biomédicos (SOSBI)
                             </div>
-                            <h1 class="cd-headline rotate-1 text-white mb-4 pb-2" style="font-size: 3.5rem; line-height: 1.2;">
+                            <h1 class="cd-headline rotate-1 text-white pb-2" style="font-size: clamp(2.2rem, 4vw, 3.2rem); line-height: 1.15; margin-bottom: 12px;">
                                 <span>SOSBI es</span>
                                 <span class="cd-words-wrapper">
                                     <b class="is-visible">Innovación</b>
@@ -143,42 +74,182 @@
                                     <b>Comunidad</b>
                                 </span>
                             </h1>
-                            <div class="custom-btn-group mt-3 d-flex justify-content-center justify-content-lg-start">
-                                <a href="about.html" class="btn custom-btn me-3 px-4 py-3">Nuestra Historia</a>
-                                <a href="contact.html" class="link text-white fw-bold align-self-center">Únete a nosotros</a>
+                            <div class="custom-btn-group mt-4 d-flex flex-wrap align-items-center justify-content-start gap-3">
+                                <a href="about.html" class="btn-hero-primary">Nuestra Historia</a>
+                                <a href="contact.html" class="btn-hero-ghost"><i class="bi bi-arrow-right-circle"></i> Únete a nosotros</a>
+                            </div>
+                            <div class="hero-stats text-start">
+                                <div>
+                                    <div class="hero-stat-num">+40</div>
+                                    <div class="hero-stat-label">Miembros activos</div>
+                                </div>
+                                <div>
+                                    <div class="hero-stat-num">6+</div>
+                                    <div class="hero-stat-label">Proyectos</div>
+                                </div>
+                                <div>
+                                    <div class="hero-stat-num">+70</div>
+                                    <div class="hero-stat-label">Cursos impartidos</div>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="col-lg-6 col-12 text-center mt-5 mt-lg-0 reveal reveal-left delay-1">
-                            <img src="images/logo.webp" class="img-fluid" alt="Logo SOSBI" style="max-width: 80%; height: auto; filter: drop-shadow(0px 10px 20px rgba(0,0,0,0.3));">
+                        <div class="col-lg-6 col-12 text-center reveal reveal-left delay-1">
+                            <div class="hero-visual-block mt-4 mt-lg-0">
+                                <div class="hero-logo-ring">
+                                    <img src="images/logo.webp" alt="Logo SOSBI">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" style="position: absolute; bottom: -1px; left: 0; width: 100%; z-index: 1; display: block; pointer-events: none;">
-                    <path fill="#ffffff" fill-opacity="1" d="M0,224L34.3,192C68.6,160,137,96,206,90.7C274.3,85,343,139,411,144C480,149,549,107,617,122.7C685.7,139,754,213,823,240C891.4,267,960,245,1029,224C1097.1,203,1166,181,1234,160C1302.9,139,1371,117,1406,106.7L1440,96L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path>
-                </svg>
+                <div class="hero-wave-container d-none d-lg-block">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+                        <path d="M0,224L34.3,192C68.6,160,137,96,206,90.7C274.3,85,343,139,411,144C480,149,549,107,617,122.7C685.7,139,754,213,823,240C891.4,267,960,245,1029,224C1097.1,203,1166,181,1234,160C1302.9,139,1371,117,1406,106.7L1440,96L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path>
+                    </svg>
+                </div>
+            </section>
+
+            <section class="carousel-section" id="anuncios">
+                <div class="container">
+                    <div class="row mb-4 align-items-end reveal reveal-down">
+                        <div class="col-lg-7">
+                            <p class="section-eyebrow">Tablero SOSBI</p>
+                            <h2 class="section-title mb-0">Anuncios &amp; <span style="color:var(--sosbi-teal)">Próximos Eventos</span></h2>
+                        </div>
+                        <div class="col-lg-5 text-lg-end">
+                            <a href="eventos.html" class="ann-card-link" style="font-size:13px; justify-content:flex-end;">
+                                Ver todos los eventos <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="carousel-overflow" style="overflow:hidden; padding: 10px 0;">
+                        <div class="carousel-track d-flex gap-3" id="annCarouselTrack" style="transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);">
+                            
+                            <div class="carousel-slide flex-shrink-0" style="width: calc(33.33% - 8px);">
+                                <div class="ann-card reveal reveal-zoom delay-1">
+                                    <div class="ann-card-img-wrap">
+                                        <img src="images/tomaprotesta.webp" alt="Conferencia Ingeniería Biomédica" onerror="this.src='images/logo.webp';">
+                                    </div>
+                                    <div class="ann-card-accent ann-accent-gold"></div>
+                                    <div class="ann-card-body">
+                                        <div>
+                                            <span class="ann-card-type type-evento">Evento</span>
+                                            <div class="ann-card-title">Toma de Protesta SOSBI</div>
+                                            <p class="ann-card-text">Se llevó a cabo la ceremonia oficial de la toma de protesta de la mesa actual de la Sociedad de Alumnos.</p>
+                                        </div>
+                                        <div class="ann-card-footer">
+                                            <span class="ann-card-date"><i class="bi bi-calendar3 me-1"></i>5 de Marzo del 2026</span>
+                                            <a href="eventos.html" class="ann-card-link">Ver más <i class="bi bi-arrow-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="carousel-slide flex-shrink-0" style="width: calc(33.33% - 8px);">
+                                <div class="ann-card reveal reveal-zoom delay-2">
+                                    <div class="ann-card-img-wrap">
+                                        <img src="images/curso_python.webp" alt="Curso Python" onerror="this.src='images/logo.webp';">
+                                    </div>
+                                    <div class="ann-card-accent ann-accent-teal"></div>
+                                    <div class="ann-card-body">
+                                        <div>
+                                            <span class="ann-card-type type-curso">Curso</span>
+                                            <div class="ann-card-title">Python para el Análisis de Señales Cardiovasculares</div>
+                                            <p class="ann-card-text">Conoce sobre nuestro más reciente curso donde nuestros miembros aprendieron técnicas avanzadas de procesamiento de señales biomédicas con Python.</p>
+                                        </div>
+                                        <div class="ann-card-footer">
+                                            <span class="ann-card-date"><i class="bi bi-calendar3 me-1"></i>Enero 2026</span>
+                                            <a href="cursos.html" class="ann-card-link">Conocer más <i class="bi bi-arrow-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="carousel-slide flex-shrink-0" style="width: calc(33.33% - 8px);">
+                                <div class="ann-card reveal reveal-zoom delay-3">
+                                    <div class="ann-card-img-wrap">
+                                        <img src="images/gasometria.webp" alt="Convocatoria Proyectos" onerror="this.src='images/gasometria.webp';">
+                                    </div>
+                                    <div class="ann-card-accent ann-accent-blue"></div>
+                                    <div class="ann-card-body">
+                                        <div>
+                                            <span class="ann-card-type type-proyecto">Proyecto</span>
+                                            <div class="ann-card-title">Avance: Equipo de Gasometría</div>
+                                            <p class="ann-card-text">Conoce los últimos avances en el desarrollo del simulador de gasometría por parte de los diferentes equipos.</p>
+                                        </div>
+                                        <div class="ann-card-footer">
+                                            <span class="ann-card-date"><i class="bi bi-calendar3 me-1"></i> 10 Abril 2026</span>
+                                            <a href="proyectos-actuales.html" class="ann-card-link">Conocer más <i class="bi bi-arrow-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="carousel-slide flex-shrink-0" style="width: calc(33.33% - 8px);">
+                                <div class="ann-card">
+                                    <div class="ann-card-img-wrap">
+                                        <img src="images/colaboracion_tec.webp" alt="Colaboración TEC" onerror="this.src='images/cursossinapsis.webp';">
+                                    </div>
+                                    <div class="ann-card-accent ann-accent-marine"></div>
+                                    <div class="ann-card-body">
+                                        <div>
+                                            <span class="ann-card-type type-novedad">Novedad</span>
+                                            <div class="ann-card-title">Colaboración Tec de Monterrey — Sinapsis</div>
+                                            <p class="ann-card-text">Conoce nuestra Primera edición de cursos intersemestrales en colaboración con SAIMD CCM.</p>
+                                        </div>
+                                        <div class="ann-card-footer">
+                                            <span class="ann-card-date"><i class="bi bi-calendar3 me-1"></i>Enero 2026</span>
+                                            <a href="cursos.html" class="ann-card-link">Más info <i class="bi bi-arrow-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-ctrl-wrap reveal reveal-up">
+                        <button class="carr-btn" id="carrPrev" aria-label="Anterior"><i class="bi bi-chevron-left"></i></button>
+                        <div class="carr-dots" id="carrDots"></div>
+                        <button class="carr-btn" id="carrNext" aria-label="Siguiente"><i class="bi bi-chevron-right"></i></button>
+                    </div>
+                </div>
             </section>
 
             <section class="about-section section-padding bg-white" id="intro-nosotros">
                 <div class="container">
-                    <div class="row align-items-center">
+                    <div class="row align-items-center g-5">
                         
-                        <div class="col-lg-6 col-12 mb-4 mb-lg-0 reveal reveal-right">
+                        <div class="col-lg-6 col-12 order-lg-2 mb-4 mb-lg-0 reveal reveal-left">
                             <h2 class="mb-4" style="color: var(--main-azul-marino);">¿Quiénes somos?</h2>
                             <p class="fs-5 text-muted">Somos una asociación de alumnos dentro de la Facultad de Ingeniería de la UNAM.</p>
                             <p>Estamos conformados por un grupo multidisciplinario de estudiantes interesados en el desarrollo de proyectos e innovación de los sistemas biomédicos.</p>
                             
-                            <a href="about.html" class="btn custom-border-btn mt-3 px-4">Saber más de nosotros</a>
+                            <a href="about.html" class="btn-outline-sosbi">Saber más de nosotros <i class="bi bi-arrow-right ms-1"></i></a>
                         </div>
 
-                        <div class="col-lg-6 col-12">
-                            <div class="row g-3">
-                                <div class="col-6 col-md-6 reveal reveal-zoom delay-1">
-                                    <img src="images/members/miembros2024.webp" class="img-fluid rounded shadow" alt="Miembros 2024">
+                        <div class="col-lg-6 col-12 order-lg-1 reveal reveal-right delay-1">
+                            <div style="position:relative; padding-bottom: 24px;">
+                                <div class="photo-grid">
+                                    <div class="photo-grid-item">
+                                        <img src="images/members/miembros2024.webp" alt="Miembros SOSBI 2024">
+                                    </div>
+                                    <div class="photo-grid-item">
+                                        <img src="images/members/generacion2026.webp" alt="Generación 2026">
+                                    </div>
                                 </div>
-                                <div class="col-6 col-md-6 reveal reveal-zoom delay-2">
-                                    <img src="images/members/generacion2026.webp" class="img-fluid rounded shadow" alt="Generación 2026">
+                                <div class="floating-badge">
+                                    <div>
+                                        <div class="floating-badge-num">2026</div>
+                                        <div class="floating-badge-label">Generación<br>activa</div>
+                                    </div>
+                                    <div style="width:1px; height:40px; background:rgba(255,255,255,0.15); margin: 0 5px;"></div>
+                                    <div>
+                                        <div class="floating-badge-num" style="font-size:1.5rem;">UNAM</div>
+                                        <div class="floating-badge-label">FI · Sistemas<br>Biomédicos</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -195,31 +266,37 @@
                         </div>
 
                         <div class="col-lg-6 col-12 mb-5 mb-lg-0 d-flex align-items-stretch reveal reveal-right delay-1">
-                            <div class="project-card-wrapper w-100 shadow-lg d-flex flex-column" style="border-bottom: 5px solid var(--main-dorado);">
+                            <div class="project-card-wrapper w-100 shadow-lg d-flex flex-column" style="border-bottom: 5px solid var(--main-dorado); border-radius: 15px; overflow: hidden;">
                                 <div class="custom-block-image-wrap m-0">
-                                    <img src="images/gasometria.webp" class="img-fluid w-100" alt="Simulador Gasometría">
+                                    <img src="images/gasometria.webp" class="img-fluid w-100" alt="Simulador Gasometría" style="height: 250px; object-fit: cover;">
+                                    <span class="proj-card-tag">Prototipo Activo</span>
                                 </div>
                                 <div class="custom-block-info bg-white p-4 d-flex flex-column flex-grow-1">
                                     <h4 class="mb-2 d-block fw-bold" style="color: var(--main-azul-marino);">Simulador de Gasometría</h4>
                                     <p class="mb-2 text-dark">Simulador electrónico de extracción sanguínea diseñado específicamente para que estudiantes de medicina y enfermería practiquen de forma segura y repetible.</p>
-                                    <p class="mb-3 text-dark">Este dispositivo integra una anatomía realista que permite a los alumnos desarrollar memoria muscular y precisión sin riesgo para pacientes reales, mejorando la curva de aprendizaje en procedimientos invasivos.</p>
-                                    <p class="mb-4 text-muted"><small><strong>Estado actual:</strong> Optimización del prototipo para manufacturar 10 unidades funcionales y validación de una plataforma educativa de apoyo clínico.</small></p>
-                                    <a href="proyectos-actuales.html" class="btn custom-btn w-100 mt-auto">Conocer proyecto a fondo</a>
+                                    <p class="mb-3 text-dark">Este dispositivo integra una anatomía realista que permite a los alumnos desarrollar memoria muscular y precisión sin riesgo para pacientes reales.</p>
+                                    <p class="mb-2 text-muted"><small><strong>Estado actual:</strong> Optimización del prototipo para manufacturar 10 unidades funcionales.</small></p>
+                                    <div class="mt-auto">
+                                        <a href="proyectos-actuales.html" class="btn-proj btn-proj-gold">Conocer proyecto a fondo</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-lg-6 col-12 d-flex align-items-stretch reveal reveal-left delay-2">
-                            <div class="project-card-wrapper w-100 shadow-lg d-flex flex-column" style="border-bottom: 5px solid var(--contrast-turquesa-fuerte);">
+                            <div class="project-card-wrapper w-100 shadow-lg d-flex flex-column" style="border-bottom: 5px solid var(--contrast-turquesa-fuerte); border-radius: 15px; overflow: hidden;">
                                 <div class="custom-block-image-wrap m-0">
-                                    <img src="images/regletas.webp" class="img-fluid w-100" alt="Regla Braille">
+                                    <img src="images/regletas.webp" class="img-fluid w-100" alt="Regla Braille" style="height: 250px; object-fit: cover;">
+                                    <span class="proj-card-tag" style="background:var(--sosbi-teal);">Impacto Social</span>
                                 </div>
                                 <div class="custom-block-info bg-white p-4 d-flex flex-column flex-grow-1">
                                     <h4 class="mb-2 d-block fw-bold" style="color: var(--main-azul-marino);">Diseño e Impresión 3D: Regletas Braille</h4>
                                     <p class="mb-2 text-dark">Diseño, modelado y manufactura aditiva (impresión 3D) de herramientas educativas inclusivas para personas con discapacidad visual.</p>
                                     <p class="mb-3 text-dark">A través de la ingeniería iterativa, estamos optimizando el diseño tradicional para hacerlo más ergonómico, resistente y accesible.</p>
-                                    <p class="mb-4 text-muted"><small><strong>Impacto a futuro:</strong> Campaña de donación de estos dispositivos a la comunidad, facilitando la lectoescritura y el aprendizaje en escuelas públicas.</small></p>
-                                    <a href="proyectos-actuales.html" class="btn custom-btn w-100 mt-auto" style="background-color: var(--contrast-turquesa-fuerte) !important; border-color: var(--contrast-turquesa-fuerte) !important;">Conocer proyecto a fondo</a>
+                                    <p class="mb-2 text-muted"><small><strong>Impacto a futuro:</strong> Campaña de donación de estos dispositivos facilitando la lectoescritura.</small></p>
+                                    <div class="mt-auto">
+                                        <a href="proyectos-actuales.html" class="btn-proj btn-proj-teal">Conocer proyecto a fondo</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -229,16 +306,27 @@
 
             <section class="about-section section-padding" id="intro-cursos" style="background-color: #f0f7f9;">
                 <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6 col-12 order-lg-1 reveal reveal-right">
-                            <img src="images/cursossinapsis.webp" class="img-fluid rounded shadow-lg" alt="Cursos Sinapsis" style="border: 5px solid white;">
+                    <div class="row align-items-center g-5">
+                        <div class="col-lg-5 col-12 order-lg-1 reveal reveal-right courses-visual">
+                            <div class="courses-img-frame">
+                                <img src="images/cursossinapsis.webp" class="img-fluid shadow-lg" alt="Cursos Sinapsis">
+                                <div class="courses-corner-badge">
+                                    <span>10</span>
+                                    <small>Cursos</small>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="col-lg-6 col-12 order-lg-2 mb-4 mb-lg-0 ps-lg-5 reveal reveal-left delay-1">
+                        <div class="col-lg-7 col-12 order-lg-2 ps-lg-5 reveal reveal-left delay-1">
                             <h2 class="mb-4" style="color: var(--main-azul-marino);">Cursos Intersemestrales</h2>
                             <p class="fs-5">Fortalece tu currículum con habilidades técnicas reales.</p>
-                            <p class="text-muted">Impartimos cursos prácticos enfocados en las necesidades de la ingeniería biomédica moderna. Por ejemplo, nuestra más reciente colaboración con la <strong>Sociedad de Alumnos de Ingeniería Biomédica del Tecnológico de Monterrey.</strong></p>
-                            <a href="cursos.html" class="btn custom-border-btn mt-4 px-4">Ver catálogo</a>
+                            
+                            <div class="collab-tag">
+                                En colaboración con la <strong>Sociedad de Alumnos de Ingeniería Biomédica del Tecnológico de Monterrey.</strong>
+                            </div>
+
+                            <p class="text-muted">Impartimos cursos prácticos enfocados en las necesidades de la ingeniería biomédica moderna.</p>
+                            <a href="cursos.html" class="btn-solid-sosbi mt-3">Ver catálogo <i class="bi bi-arrow-right ms-1"></i></a>
                         </div>
                     </div>
                 </div>
@@ -294,6 +382,91 @@
         <script src="js/animated-headline.js"></script>
         <script src="js/modernizr.js"></script>
         <script src="js/custom.js"></script>
+        <script>
+        // =============================================
+        //  CARRUSEL DE ANUNCIOS
+        // =============================================
+        (function() {
+            const track = document.getElementById('annCarouselTrack');
+            const slides = track ? track.querySelectorAll('.carousel-slide') : [];
+            const dotsContainer = document.getElementById('carrDots');
+            const prevBtn = document.getElementById('carrPrev');
+            const nextBtn = document.getElementById('carrNext');
 
+            if (!track || slides.length === 0) return;
+
+            let current = 0;
+            let visibleCount = 3;
+            let autoTimer;
+
+            function getVisible() {
+                if (window.innerWidth < 768) return 1;
+                if (window.innerWidth < 992) return 2;
+                return 3;
+            }
+
+            function totalPages() {
+                return Math.max(1, slides.length - visibleCount + 1);
+            }
+
+            function buildDots() {
+                dotsContainer.innerHTML = '';
+                for (let i = 0; i < totalPages(); i++) {
+                    const d = document.createElement('button');
+                    d.className = 'carr-dot' + (i === current ? ' active' : '');
+                    d.addEventListener('click', () => goTo(i));
+                    dotsContainer.appendChild(d);
+                }
+            }
+
+            function goTo(idx) {
+                visibleCount = getVisible();
+                const pages = totalPages();
+                current = Math.max(0, Math.min(idx, pages - 1));
+                const slideW = slides[0].offsetWidth + 12; // gap = 12px
+                track.style.transform = `translateX(-${current * slideW}px)`;
+                dotsContainer.querySelectorAll('.carr-dot').forEach((d, i) => {
+                    d.classList.toggle('active', i === current);
+                });
+            }
+
+            function next() { goTo(current + 1 < totalPages() ? current + 1 : 0); }
+            function prev() { goTo(current - 1 >= 0 ? current - 1 : totalPages() - 1); }
+
+            nextBtn && nextBtn.addEventListener('click', () => { next(); resetAuto(); });
+            prevBtn && prevBtn.addEventListener('click', () => { prev(); resetAuto(); });
+
+            function startAuto() { autoTimer = setInterval(next, 5000); }
+            function resetAuto() { clearInterval(autoTimer); startAuto(); }
+
+            function init() {
+                visibleCount = getVisible();
+                slides.forEach(s => {
+                    if (window.innerWidth < 768) s.style.width = 'calc(100% - 8px)';
+                    else if (window.innerWidth < 992) s.style.width = 'calc(50% - 8px)';
+                    else s.style.width = 'calc(33.33% - 8px)';
+                });
+                if (current >= totalPages()) current = 0;
+                buildDots();
+                goTo(current);
+            }
+
+            init();
+            startAuto();
+            window.addEventListener('resize', init);
+
+            // Pause on hover
+            track.closest('.carousel-overflow').addEventListener('mouseenter', () => clearInterval(autoTimer));
+            track.closest('.carousel-overflow').addEventListener('mouseleave', startAuto);
+
+            // Touch swipe
+            let startX = 0;
+            track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, {passive: true});
+            track.addEventListener('touchend', e => {
+                const diff = startX - e.changedTouches[0].clientX;
+                if (Math.abs(diff) > 50) { diff > 0 ? next() : prev(); resetAuto(); }
+            }, {passive: true});
+        })();
+        </script>
     </body>
 </html>

@@ -540,3 +540,300 @@ a:hover {
     font-weight: 700 !important; /* Un poco más gruesas para que destaquen */
   }
 }
+
+/* =========================================
+   ESTILOS MOVIDOS DESDE INDEX.HTML
+   ========================================= */
+:root {
+    --sosbi-azul:    #0F2A6E;
+    --sosbi-marino:  #17375F;
+    --sosbi-oro:     #C49A1A;
+    --sosbi-oro-lt:  #F2CC60;
+    --sosbi-teal:    #05809A;
+    --sosbi-teal-lt: #34A6AA;
+    --sosbi-bg:      #F4F7FC; /* Color base original del carrusel */
+    --font-display:  'Montserrat', sans-serif;
+    --font-body:     'DM Sans', sans-serif;
+    --font-ui:       'Poppins', sans-serif;
+}
+
+/* --- RECUADRO DEL HERO RECUPERADO EXACTAMENTE COMO LA IMAGEN --- */
+.hero-legend {
+    font-family: var(--font-ui);
+    font-weight: 600;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 1px;
+    background: rgba(23, 40, 65, 0.85); /* El recuadro oscuro elegante */
+    padding: 10px 20px;
+    border-radius: 6px;
+    display: inline-block;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* --- Ajuste General Hero (CANDADO ANTI-CORTES: margin-bottom: 0) --- */
+.hero-section {
+    padding-bottom: 180px !important; /* Espacio para que la ola respire */
+    position: relative;
+    min-height: 85vh; 
+    z-index: 2; 
+    margin-bottom: 0 !important; /* Evita que succione al carrusel */
+}
+
+/* --- La Ola Perfecta (Sin cortes) --- */
+.hero-wave-container {
+    position: absolute;
+    bottom: -2px; /* Baja un poquito para sellar perfecto con el carrusel */
+    left: 0;
+    width: 100%;
+    line-height: 0;
+    z-index: 3;
+    pointer-events: none;
+}
+.hero-wave-container svg {
+    display: block;
+    width: 100%;
+    height: auto; 
+}
+.hero-wave-container path {
+    fill: var(--sosbi-bg) !important; /* Fuerza a que sea IGUAL al fondo del carrusel */
+}
+
+/* --- Logo Animado Hero --- */
+.hero-visual-block {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+.hero-logo-ring {
+    position: relative;
+    width: 260px; 
+    height: 260px; 
+}
+.hero-logo-ring::before {
+    content: '';
+    position: absolute;
+    inset: -15px;
+    border-radius: 50%;
+    border: 2px dashed rgba(255,255,255,0.4);
+    animation: spin-slow 20s linear infinite;
+}
+.hero-logo-ring::after {
+    content: '';
+    position: absolute;
+    inset: -35px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.2);
+    animation: spin-slow 30s linear infinite reverse;
+}
+@keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+.hero-logo-ring img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 15px 40px rgba(0,0,0,0.4));
+    position: relative;
+    z-index: 1;
+}
+
+/* --- Estadísticas Hero --- */
+.hero-stats {
+    display: flex;
+    gap: 24px;
+    margin-top: 36px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    justify-content: flex-start; /* Alineado siempre a la izquierda */
+}
+.hero-stat-num {
+    font-family: var(--font-display);
+    font-size: 1.6rem; 
+    color: var(--sosbi-oro-lt);
+    line-height: 1;
+    font-weight: 800;
+}
+.hero-stat-label {
+    font-family: var(--font-ui);
+    font-size: 10px; 
+    color: rgba(255,255,255,0.8);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 4px;
+}
+
+/* --- Botones --- */
+.btn-hero-primary { background: var(--sosbi-oro); color: #fff !important; font-family: var(--font-ui); font-weight: 700; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; padding: 12px 26px; border-radius: 4px; border: none; transition: all 0.3s; text-decoration: none; display: inline-block; }
+.btn-hero-primary:hover { background: var(--sosbi-teal); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(5,128,154,0.4); }
+
+.btn-hero-ghost { color: #fff !important; font-family: var(--font-ui); font-weight: 600; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: color 0.3s; }
+.btn-hero-ghost:hover { color: var(--sosbi-oro-lt) !important; }
+
+.btn-outline-sosbi { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-ui); font-weight: 700; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: var(--sosbi-azul) !important; border: 2px solid var(--sosbi-azul); border-radius: 4px; padding: 12px 28px; text-decoration: none; transition: all 0.3s; margin-top: 16px; }
+.btn-outline-sosbi:hover { background: var(--sosbi-azul); color: #fff !important; }
+
+.btn-solid-sosbi { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-ui); font-weight: 700; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; background: var(--sosbi-teal); color: #fff !important; border-radius: 4px; padding: 13px 30px; text-decoration: none; transition: all 0.3s; }
+.btn-solid-sosbi:hover { background: var(--sosbi-azul); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(15,42,110,0.3); }
+
+.btn-proj { display: block; width: 100%; text-align: center; font-family: var(--font-ui); font-weight: 700; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; padding: 12px; border-radius: 8px; text-decoration: none; transition: all 0.3s; margin-top: 15px;}
+.btn-proj-gold { background: rgba(196,154,26,0.1); border: 1px solid rgba(196,154,26,0.4); color: var(--sosbi-oro) !important; }
+.btn-proj-gold:hover { background: var(--sosbi-oro); border-color: var(--sosbi-oro); color: #fff !important; }
+.btn-proj-teal { background: rgba(5,128,154,0.1); border: 1px solid rgba(5,128,154,0.4); color: var(--sosbi-teal) !important; }
+.btn-proj-teal:hover { background: var(--sosbi-teal); border-color: var(--sosbi-teal); color: #fff !important; }
+
+/* --- Grid de Fotos e Insignia (Quiénes Somos) --- */
+.photo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.photo-grid-item { border-radius: 16px; overflow: hidden; height: 320px; }
+.photo-grid-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+.photo-grid-item:hover img { transform: scale(1.05); }
+
+.floating-badge { position: absolute; bottom: -30px; left: 20px; background: var(--sosbi-azul); color: #fff; border-radius: 16px; padding: 16px 28px; display: flex; align-items: center; gap: 16px; box-shadow: 0 10px 30px rgba(15,42,110,0.4); z-index: 2; }
+.floating-badge-num { font-family: var(--font-display); font-size: 2.2rem; color: var(--sosbi-oro); line-height: 1; font-weight: 900;}
+.floating-badge-label { font-family: var(--font-ui); font-size: 12px; letter-spacing: 1px; color: rgba(255,255,255,0.7); text-transform: uppercase; line-height: 1.4; }
+
+/* --- Etiquetas Proyectos --- */
+.custom-block-image-wrap { position: relative; overflow: hidden;}
+.proj-card-tag { position: absolute; top: 16px; left: 16px; background: var(--sosbi-oro); color: #fff; font-family: var(--font-ui); font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; z-index: 3;}
+
+/* --- Insignia 10 Cursos --- */
+.courses-visual { position: relative; }
+.courses-img-frame { border-radius: 20px; overflow: hidden; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.15); border: none !important;}
+.courses-img-frame img { width: 100%; display: block; }
+.courses-img-frame::after { content: ''; position: absolute; inset: 0; border: 3px solid rgba(5,128,154,0.3); border-radius: 20px; pointer-events: none; }
+
+.courses-corner-badge { 
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    background: var(--sosbi-teal); 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    color: #fff; 
+    padding: 12px 20px; 
+    border-radius: 0 20px 0 20px;
+    z-index: 5;
+}
+.courses-corner-badge span { 
+    font-family: var(--font-display); 
+    font-size: 1.8rem; 
+    font-weight: 900; 
+    line-height: 1; 
+}
+.courses-corner-badge small { 
+    font-family: var(--font-body); 
+    font-size: 10px; 
+    letter-spacing: 1.5px; 
+    text-transform: uppercase; 
+    font-weight: 700; 
+    margin-top: 4px;
+}
+
+.collab-tag {
+  display: inline-block;
+  background: rgba(15,42,110,0.07);
+  border-left: 3px solid var(--sosbi-teal);
+  padding: 10px 16px;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.88rem;
+  color: var(--sosbi-marino);
+  margin-top: 8px;
+  margin-bottom: 24px;
+  font-style: italic;
+}
+
+/* --- Carrusel --- */
+.carousel-section { 
+    background-color: var(--sosbi-bg) !important; 
+    /* Se redujo el padding superior para que en PC esté más cerca de la ola */
+    padding: 5px 0 80px 0 !important; 
+    margin-top: 0 !important; 
+    position: relative; 
+    z-index: 1; 
+}
+.section-eyebrow { font-family: var(--font-ui); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--sosbi-teal); margin-bottom: 6px; }
+.section-title { font-family: var(--font-display) !important; font-size: clamp(1.8rem, 3vw, 2.5rem) !important; color: var(--sosbi-azul) !important; letter-spacing: 1px; font-weight: 900; }
+
+.ann-card { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 25px rgba(0,0,0,0.05); display: flex; flex-direction: column; height: 100%; min-height: 320px; transition: transform 0.3s, box-shadow 0.3s; border: 1px solid rgba(0,0,0,0.03);}
+.ann-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.12); }
+
+.ann-card-img-wrap { width: 100%; height: 160px; overflow: hidden; position: relative; }
+.ann-card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+.ann-card:hover .ann-card-img-wrap img { transform: scale(1.08); }
+
+.ann-card-accent { width: 100%; height: 5px; flex-shrink: 0; }
+.ann-accent-gold { background: linear-gradient(90deg, var(--sosbi-oro), var(--sosbi-oro-lt)); }
+.ann-accent-teal { background: linear-gradient(90deg, var(--sosbi-teal), var(--sosbi-teal-lt)); }
+.ann-accent-blue { background: linear-gradient(90deg, var(--sosbi-azul), #3358c4); }
+.ann-accent-marine { background: linear-gradient(90deg, var(--sosbi-marino), var(--sosbi-teal)); }
+
+.ann-card-body { padding: 24px; display: flex; flex-direction: column; justify-content: space-between; flex: 1; }
+.ann-card-type { font-family: var(--font-ui); font-size: 10px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; display: inline-block; margin-bottom: 12px; width: fit-content; }
+.type-evento { background: rgba(196,154,26,0.12); color: var(--sosbi-oro); }
+.type-curso { background: rgba(5,128,154,0.12); color: var(--sosbi-teal); }
+.type-proyecto { background: rgba(15,42,110,0.1); color: var(--sosbi-azul); }
+.type-novedad { background: rgba(52,166,170,0.12); color: var(--sosbi-teal-lt); }
+.ann-card-title { font-family: var(--font-ui); font-size: 1.1rem; font-weight: 700; color: var(--sosbi-azul); line-height: 1.3; margin-bottom: 8px; }
+.ann-card-text { font-size: 0.85rem; color: #666; line-height: 1.5; flex: 1; margin-bottom: 16px; }
+.ann-card-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 15px; border-top: 1px solid rgba(0,0,0,0.05); }
+.ann-card-date { font-family: var(--font-ui); font-size: 11px; color: #999; letter-spacing: 1px; }
+.ann-card-link { font-family: var(--font-ui); font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--sosbi-teal) !important; text-decoration: none; display: flex; align-items: center; gap: 4px; transition: gap 0.2s; }
+.ann-card-link:hover { gap: 8px; color: var(--sosbi-oro) !important; }
+
+.carousel-ctrl-wrap { display: flex; align-items: center; gap: 10px; margin-top: 32px; justify-content: center; }
+.carr-btn { width: 42px; height: 42px; border-radius: 50%; border: 2px solid var(--sosbi-azul); background: transparent; color: var(--sosbi-azul); display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 18px; transition: all 0.2s; }
+.carr-btn:hover { background: var(--sosbi-azul); color: #fff; }
+.carr-dots { display: flex; gap: 6px; align-items: center; }
+.carr-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(15,42,110,0.2); cursor: pointer; transition: all 0.3s; border: none; padding: 0; }
+.carr-dot.active { background: var(--sosbi-azul); width: 24px; border-radius: 4px; }
+
+
+/* =========================================
+   CORRECCIÓN DE ESPACIOS CELULARES
+   ========================================= */
+@media (max-width: 991px) {
+    .hero-section {
+        padding-bottom: 80px !important; 
+        padding-top: 100px !important; 
+        min-height: auto;
+        margin-bottom: 0 !important; 
+    }
+    .hero-logo-ring { width: 200px; height: 200px; margin: 30px auto 0; }
+    
+    .carousel-section {
+        /* Se mantiene el respiro amplio en celular para no cortar nada */
+        padding-top: 80px !important; 
+        margin-top: 0 !important;
+    }
+    
+    .photo-grid-item { height: 250px; }
+    .floating-badge { display: none; }
+}
+
+@media (max-width: 767.98px) {
+    #intro-nosotros {
+        padding-top: 80px !important;
+        padding-bottom: 80px !important;
+    }
+    .photo-grid { grid-template-columns: 1fr; }
+    .ann-card-accent { width: 100%; height: 5px; }
+    
+    .floating-badge { 
+        display: flex; 
+        position: relative; 
+        bottom: 0; 
+        left: 0; 
+        margin-top: -30px; 
+        margin-left: 10px;
+        margin-right: 10px;
+        justify-content: center;
+    }
+}
