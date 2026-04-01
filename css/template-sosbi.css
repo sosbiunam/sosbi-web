@@ -36,9 +36,23 @@
   --border-radius-small:          10px;
 }
 
-body {
+/* =========================================
+   CANDADO ANTI-SCROLL HORIZONTAL (MÓVILES)
+   ========================================= */
+html, body {
   background-color: var(--white-color);
   font-family: var(--body-font-family); 
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden !important;
+}
+
+/* El truco mágico: Ocultar el desbordamiento en el contenedor principal */
+main {
+  overflow-x: hidden !important;
+  width: 100%;
+  position: relative;
 }
 
 ::selection {
