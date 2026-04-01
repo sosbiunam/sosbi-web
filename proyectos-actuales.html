@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Proyectos y Programas - Sociedad de Alumnos de Sistemas Biomédicos (SOSBI) UNAM">
+        <meta name="author" content="Miguel Navarrete">
+
+        <title>Proyectos Actuales | SOSBI UNAM</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Montserrat:wght@800;900&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+        
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap-icons.css" rel="stylesheet">
+        <link href="css/template-sosbi.css" rel="stylesheet">
+        <link href="css/coordinaciones.css" rel="stylesheet">
+
+        <style>
+            /* =========================================
+               HERO REDISEÑADO (DEGRADADO ÚNICO + IMAGEN)
+               ========================================= */
+            .hero-proyectos {
+                background: linear-gradient(135deg, 
+                            rgba(23, 55, 95, 0.95) 0%, 
+                            rgba(65, 25, 82, 0.85) 50%, 
+                            rgba(5, 128, 154, 0.9) 100%), 
+                            url('images/cia.webp') !important;
+                background-size: cover !important; 
+                background-position: center !important; 
+                background-attachment: fixed !important;
+            }
+
+            /* --- TARJETAS DE CASO DE ESTUDIO (PROYECTOS) --- */
+            .project-case-card {
+                background: #fff;
+                border-radius: 20px;
+                overflow: hidden;
+                box-shadow: 0 15px 35px rgba(23, 55, 95, 0.08);
+                display: flex;
+                margin-bottom: 50px;
+                border: 1px solid rgba(0,0,0,0.05);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            .project-case-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 20px 45px rgba(23, 55, 95, 0.12);
+            }
+
+            .project-img-col {
+                width: 40%;
+                position: relative;
+                background-color: #f4f7fc;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .project-img-col img {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 1 / 1; 
+                object-fit: contain; 
+            }
+            
+            .project-content-col {
+                width: 60%;
+                padding: 45px 50px;
+                display: flex;
+                flex-direction: column;
+                position: relative;
+            }
+            .project-content-col::before {
+                content: ''; position: absolute; top: 0; left: 0; width: 6px; height: 100%;
+                background: var(--project-color, var(--main-dorado));
+            }
+
+            .project-tag {
+                font-family: var(--font-ui); font-size: 11px; font-weight: 700;
+                letter-spacing: 2px; text-transform: uppercase; padding: 6px 15px;
+                border-radius: 20px; display: inline-block; margin-bottom: 15px;
+                background: rgba(0,0,0,0.05); color: #555; width: fit-content;
+            }
+
+            .info-block { margin-bottom: 20px; }
+            .info-block h6 { color: var(--main-azul-marino); font-weight: 700; font-family: var(--font-ui); font-size: 1rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;}
+            .info-block p { color: #666; font-size: 0.95rem; margin-bottom: 0; line-height: 1.6;}
+
+            .progress-container { margin-top: auto; padding-top: 25px; border-top: 1px solid rgba(0,0,0,0.08); }
+            .progress-status { font-weight: 700; font-size: 0.9rem; color: var(--project-color, var(--main-azul-marino)); margin-bottom: 8px; }
+            .progress { height: 8px; border-radius: 10px; background-color: #e9ecef; overflow: visible; }
+            .progress-bar { background-color: var(--project-color, var(--main-dorado)); border-radius: 10px; position: relative; }
+            
+            /* --- TARJETA DE PROGRAMA (MENTORÍA) NUEVA VERSIÓN ALINEADA --- */
+            .program-card-new {
+                background: linear-gradient(145deg, #ffffff 0%, #f0f7f9 100%);
+                border-radius: 20px;
+                box-shadow: 0 15px 35px rgba(5, 128, 154, 0.08);
+                border-left: 8px solid var(--contrast-turquesa-fuerte);
+                overflow: hidden;
+                border-right: 1px solid rgba(0,0,0,0.05);
+                border-top: 1px solid rgba(0,0,0,0.05);
+                border-bottom: 1px solid rgba(0,0,0,0.05);
+                padding: 40px 50px;
+            }
+
+            /* =========================================
+               PRÓXIMOS LANZAMIENTOS (GRID ALINEADO)
+               ========================================= */
+            .launch-card-clean {
+                border-radius: 20px;
+                padding: 45px 40px;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                transition: all 0.3s ease;
+                position: relative;
+                overflow: hidden;
+            }
+            .launch-card-clean:hover {
+                transform: translateY(-8px);
+            }
+
+            .launch-dark {
+                background: linear-gradient(145deg, var(--main-azul-marino) 0%, #0a1930 100%);
+                color: white;
+                box-shadow: 0 15px 35px rgba(23, 55, 95, 0.15);
+                border-top: 6px solid var(--contrast-turquesa-fuerte);
+            }
+            .launch-dark h4 { color: white !important; font-family: var(--font-display); font-weight: 800; }
+            .launch-dark p { color: rgba(255,255,255,0.8) !important; font-size: 0.95rem; }
+
+            .launch-light {
+                background: #ffffff;
+                color: var(--main-azul-marino);
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+                border: 1px solid rgba(0,0,0,0.05);
+                border-top: 6px solid var(--main-dorado);
+            }
+            .launch-light h4 { color: var(--main-azul-marino) !important; font-family: var(--font-display); font-weight: 800; }
+            .launch-light p { color: #666 !important; font-size: 0.95rem; }
+
+            .launch-icon-box {
+                width: 65px; height: 65px; border-radius: 16px;
+                display: flex; align-items: center; justify-content: center;
+                font-size: 30px; margin-bottom: 25px;
+            }
+            .launch-dark .launch-icon-box { background: rgba(5, 128, 154, 0.2); color: var(--contrast-turquesa-fuerte); }
+            .launch-light .launch-icon-box { background: rgba(162, 122, 17, 0.1); color: var(--main-dorado); }
+
+            @media (max-width: 991px) {
+                .project-case-card { flex-direction: column; }
+                .project-img-col { width: 100%; height: auto; }
+                .project-content-col { width: 100%; padding: 30px; }
+                .project-content-col::before { width: 100%; height: 6px; top: 0; left: 0; }
+                .program-card-new { padding: 30px; }
+            }
+
+            .bg-dorado { background-color: var(--main-dorado) !important; border: none !important; }
+            .bg-dorado:hover { background-color: #8c6910 !important; }
+        </style>
+    </head>
+    
+    <body>
+        <main>
+            <nav class="navbar navbar-expand-lg sticky-top shadow-lg">                
+                <div class="container">
+                    <a class="navbar-brand" href="index.html">
+                        <img src="images/logo.webp" alt="SOSBI Logo" class="navbar-logo-img">
+                        <span class="navbar-brand-text">SOSBI <small>UNAM</small></span>
+                    </a>
+                    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto align-items-lg-center">
+                            <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                            <li class="nav-item"><a class="nav-link" href="about.html">Sobre Nosotros</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Coordinaciones</a>
+                                <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                                    <li><a class="dropdown-item item-rh" href="recursos-humanos.html">Recursos Humanos</a></li>
+                                    <li><a class="dropdown-item item-rrpp" href="relaciones-publicas.html">Relaciones Públicas</a></li>
+                                    <li><a class="dropdown-item item-com" href="comunicacion-diseno.html">Comunicación y Diseño</a></li>
+                                    <li><a class="dropdown-item item-proy" href="proyectos-coord.html">Proyectos</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="eventos.html">Próximos Eventos</a></li>
+                            <li class="nav-item"><a class="nav-link" href="cursos.html">Cursos</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="proyectos-actuales.html">Proyectos y Programas</a></li>
+                            <li class="nav-item"><a class="nav-link" href="contact.html">Contacto</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <section class="hero-section hero-short hero-proyectos d-flex justify-content-center align-items-center">
+                <div class="container position-relative">
+                    <div class="row align-items-center">
+                        <div class="col-12 text-center reveal reveal-down">
+                            <h1 class="text-white mb-4" style="font-family: var(--font-display); font-weight: 900;">Proyectos y Programas</h1>
+                            <p class="fs-5" style="color: #ffffff !important; opacity: 0.95;">Descubre cómo estamos aplicando la ingeniería para transformar la educación y la salud.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <svg viewBox="0 0 1962 178" xmlns="http://www.w3.org/2000/svg" style="position: absolute; bottom: -1px; left: 0; width: 100%; z-index: 10; transform: rotate(180deg); pointer-events: none;">
+                    <path fill="#f8f9fa" d="M 0 114 C 118.5 114 118.5 167 237 167 L 237 167 L 237 0 L 0 0 Z"></path> 
+                    <path fill="#f8f9fa" d="M 236 167 C 373 167 373 128 510 128 L 510 128 L 510 0 L 236 0 Z"></path> 
+                    <path fill="#f8f9fa" d="M 509 128 C 607 128 607 153 705 153 L 705 153 L 705 0 L 509 0 Z"></path>
+                    <path fill="#f8f9fa" d="M 704 153 C 812 153 812 113 920 113 L 920 113 L 920 0 L 704 0 Z"></path>
+                    <path fill="#f8f9fa" d="M 919 113 C 1048.5 113 1048.5 148 1178 148 L 1178 148 L 1178 0 L 919 0 Z"></path>
+                    <path fill="#f8f9fa" d="M 1177 148 C 1359.5 148 1359.5 129 1542 129 L 1542 129 L 1542 0 L 1177 0 Z"></path>
+                    <path fill="#f8f9fa" d="M 1541 129 C 1751.5 129 1751.5 138 1962 138 L 1962 138 L 1962 0 L 1541 0 Z"></path>
+                </svg>
+            </section>
+
+            <section class="section-padding bg-light pb-5" style="padding-top: 80px;">
+                <div class="container">
+                    <div class="row mb-4 text-center reveal reveal-up">
+                        <div class="col-12">
+                            <p class="section-eyebrow">Ingeniería Aplicada</p>
+                            <h2 class="section-title mb-0">Proyectos en <span style="color:var(--main-dorado)">Desarrollo</span></h2>
+                        </div>
+                    </div>
+
+                    <div class="project-case-card reveal reveal-up delay-1" style="--project-color: var(--contrast-turquesa-claro);">
+                        <div class="project-img-col">
+                            <img src="images/braille.webp" alt="Regletas Braille 3D" onerror="this.src='images/logo.webp';">
+                        </div>
+                        <div class="project-content-col">
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                <span class="project-tag" style="background: rgba(52,166,170,0.12); color: var(--contrast-turquesa-claro);">Impacto Social</span>
+                                <span class="project-tag" style="background: rgba(162, 122, 17, 0.12); color: var(--main-dorado);"><i class="bi bi-globe-americas me-1"></i>Alcance Internacional</span>
+                            </div>
+                            
+                            <h4 class="mb-3" style="color: var(--main-azul-marino); font-family: var(--font-display); font-weight: 800;">Diseño e Impresión 3D: Regletas Braille</h4>
+                            
+                            <div class="info-block">
+                                <h6><i class="bi bi-lightbulb"></i> Contexto y Justificación</h6>
+                                <p>El acceso a herramientas educativas para personas con discapacidad visual suele ser costoso y limitado. Este proyecto busca democratizar la lectoescritura mediante el diseño, modelado y manufactura aditiva (impresión 3D) de regletas ergonómicas, resistentes y de bajo costo.</p>
+                            </div>
+
+                            <div class="progress-container mt-auto">
+                                <div class="progress-status d-flex justify-content-between">
+                                    <span>Avances del Proyecto</span>
+                                    <span>Investigación (20%)</span>
+                                </div>
+                                <p class="text-muted small mb-2">Actualmente nos encontramos en una fase de investigación profunda de las necesidades específicas dentro de nuestra comunidad cercana y asociaciones locales. Estamos recopilando requerimientos de usuarios finales para asegurar que el diseño sea verdaderamente funcional y ergonómico. A la par, el proyecto ha trascendido fronteras, contando con <strong>miembros en el equipo provenientes de diversas universidades a nivel internacional</strong>, enriqueciendo el desarrollo tecnológico y social.</p>
+                                <div class="progress mt-2">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 20%; background-color: var(--contrast-turquesa-claro);" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-case-card reveal reveal-up delay-2" style="--project-color: var(--main-dorado);">
+                        <div class="project-content-col order-2 order-lg-1">
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                <span class="project-tag" style="background: rgba(162, 122, 17, 0.12); color: var(--main-dorado);">Innovación Médica</span>
+                                <span class="project-tag" style="background: rgba(23, 55, 95, 0.08); color: var(--main-azul-marino);">Hardware Educativo</span>
+                            </div>
+                            
+                            <h4 class="mb-3" style="color: var(--main-azul-marino); font-family: var(--font-display); font-weight: 800;">Simulador de Gasometría</h4>
+                            
+                            <div class="info-block">
+                                <h6><i class="bi bi-crosshair"></i> Contexto y Justificación</h6>
+                                <p>La extracción de sangre arterial es un procedimiento invasivo y doloroso. Los estudiantes de medicina y enfermería necesitan entornos de práctica seguros y repetibles para desarrollar memoria muscular y precisión sin poner en riesgo a pacientes reales. Nuestro simulador electrónico resuelve esta necesidad integrando anatomía realista y retroalimentación inmediata.</p>
+                            </div>
+
+                            <div class="progress-container mt-auto">
+                                <div class="progress-status d-flex justify-content-between">
+                                    <span>Avances del Proyecto</span>
+                                    <span>Validación (30%)</span>
+                                </div>
+                                <p class="text-muted small mb-2">Nos encontramos en la etapa de validación rigurosa del modelo inicial e identificación exhaustiva de puntos de optimización. Además, estamos trabajando en la validación y justificación técnica de los materiales y componentes electrónicos usados, para garantizar su viabilidad, precisión y durabilidad para un uso a largo plazo en prácticas clínicas.</p>
+                                <div class="progress mt-2">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-img-col order-1 order-lg-2">
+                            <img src="images/gasometria1.webp" alt="Simulador de Gasometría" onerror="this.src='images/logo.webp';">
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="section-padding bg-white pb-5">
+                <div class="container">
+                    <div class="row mb-4 text-center reveal reveal-up">
+                        <div class="col-12">
+                            <p class="section-eyebrow" style="color: var(--contrast-turquesa-fuerte);">Comunidad SOSBI</p>
+                            <h2 class="section-title mb-0">Programas <span style="color:var(--contrast-turquesa-fuerte)">Activos</span></h2>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-center reveal reveal-up delay-1">
+                        <div class="col-lg-10">
+                            <div class="program-card-new">
+                                <div class="row align-items-center g-4">
+                                    <div class="col-lg-7">
+                                        <span class="project-tag mb-3" style="background: var(--main-azul-marino); color: white;">Desarrollo Profesional</span>
+                                        <h4 class="mb-3" style="color: var(--main-azul-marino); font-family: var(--font-display); font-weight: 800;">Programa de Mentoría</h4>
+                                        <h6 class="fw-bold mb-2" style="color: var(--contrast-turquesa-fuerte); font-size: 0.95rem;">¿Por qué lo hacemos?</h6>
+                                        <p class="text-muted mb-4" style="font-size: 0.95rem;">El camino universitario puede ser retador. Creemos fielmente en el poder de la comunidad, por ello hemos diseñado este programa para conectar a estudiantes de semestres avanzados y egresados con alumnos de reciente ingreso, brindando guía académica, apoyo técnico y orientación profesional.</p>
+                                        
+                                        <div class="p-3 bg-white rounded-3 shadow-sm border-start border-4" style="border-color: var(--contrast-turquesa-fuerte) !important;">
+                                            <h6 class="fw-bold mb-1 text-dark" style="font-size: 0.9rem;"><i class="bi bi-rocket-takeoff text-success me-2"></i>¡Fase 1 Iniciada con Éxito!</h6>
+                                            <p class="mb-0 text-muted small">Nos emociona anunciar que la primera fase ya arrancó. Hemos realizado exitosamente el contacto y emparejamiento entre mentores y mentorados, dando inicio a las primeras sesiones de trabajo conjunto.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-lg-5 text-center mt-4 mt-lg-0">
+                                        <img src="images/Mentoría1.webp" alt="Programa de Mentoría" class="img-fluid rounded-4 shadow-sm" onerror="this.src='images/logo.webp';">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-padding bg-light">
+                <div class="container">
+                    <div class="row mb-5 text-center reveal reveal-up">
+                        <div class="col-12">
+                            <h2 class="section-title mb-0">Próximos <span style="color:var(--main-dorado)">Lanzamientos</span></h2>
+                            <p class="text-muted mt-3 fs-5">Mantente atento a nuestras redes, vienen cosas grandes.</p>
+                        </div>
+                    </div>
+
+                    <div class="row g-4 justify-content-center">
+                        
+                        <div class="col-lg-5 col-md-6 reveal reveal-right delay-1">
+                            <div class="launch-card-clean launch-dark">
+                                <div class="launch-icon-box">
+                                    <i class="bi bi-cpu"></i>
+                                </div>
+                                <h4 class="mb-3">Proyecto de Visión Artificial</h4>
+                                <p class="mb-4">Estamos cocinando un nuevo proyecto tecnológico enfocado en la aplicación de Inteligencia Artificial para el análisis biomédico. Una excelente oportunidad para adentrarte en el machine learning y el procesamiento de imágenes médicas de vanguardia.</p>
+                                <div class="mt-auto">
+                                    <span class="badge rounded-pill bg-warning text-dark px-3 py-2 fw-bold shadow-sm mt-3">
+                                        <i class="bi bi-clock-history me-1"></i>Próximamente | Espera la convocatoria
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-5 col-md-6 reveal reveal-left delay-2">
+                            <div class="launch-card-clean launch-light">
+                                <div class="launch-icon-box">
+                                    <i class="bi bi-person-plus-fill"></i>
+                                </div>
+                                <h4 class="mb-3">¡Únete a nuestro equipo!</h4>
+                                <p class="mb-4">¿Quieres ser parte activa del desarrollo tecnológico, organizar eventos masivos y crecer en comunidad? Prepárate para formar parte de la familia SOSBI y potenciar tus habilidades blandas y técnicas.</p>
+                                <div class="mt-auto">
+                                    <span class="badge rounded-pill px-3 py-2 fw-bold shadow-sm mt-3" style="background-color: var(--main-dorado); color: white;">
+                                        <i class="bi bi-calendar-check me-1"></i>Gran Reclutamiento: 20 de Abril en adelante
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="site-footer pt-5">
+            <div class="container pb-4">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0 reveal reveal-up">
+                        <a class="navbar-brand d-flex align-items-center mb-3" href="index.html">
+                            <span class="navbar-brand-text text-white fs-3">SOSBI <small style="color: var(--main-dorado) !important;">UNAM</small></span>
+                        </a>
+                        <p class="text-white-50">Innovación tecnológica para la salud.</p>
+                    </div>
+
+                    <div class="col-lg-5 col-md-6 col-12 mb-4 mb-lg-0 reveal reveal-up delay-1">
+                        <h5 class="site-footer-title mb-3 text-white">Contacto y Ubicación</h5>
+                        <p class="text-white-50 mb-2 lh-base">
+                            <i class="bi bi-geo-alt-fill me-2" style="color: var(--main-dorado);"></i>
+                            Universidad Nacional Autónoma de México<br>
+                            <span class="ms-4">Anexo de la Facultad de Ingeniería | Edificio X, 2° Piso</span>
+                        </p>
+                        <p class="text-white-50 mb-2">
+                            <i class="bi bi-telephone-fill me-2" style="color: var(--main-dorado);"></i> 
+                            +52 (55) 7140 6007 | +52 (55) 8023 0212
+                        </p>
+                        <p class="text-white-50 mb-0">
+                            <i class="bi bi-envelope-fill me-2" style="color: var(--main-dorado);"></i> 
+                            sosbi.unam@gmail.com
+                        </p>
+                    </div>
+
+                    <div class="col-lg-3 col-md-12 col-12 text-lg-end mt-4 mt-lg-0 d-flex flex-column align-items-lg-end justify-content-center reveal reveal-up delay-2">
+                        <h5 class="site-footer-title mb-3 text-white">Síguenos</h5>
+                        <ul class="social-icon justify-content-lg-end mb-4">
+                            <li class="social-icon-item"><a href="https://instagram.com/sosbifiunam" target="_blank" class="social-icon-link bi-instagram bg-dorado"></a></li>
+                            <li class="social-icon-item"><a href="https://www.linkedin.com/company/sosbi-fiunam/" target="_blank" class="social-icon-link bi-linkedin bg-dorado"></a></li>
+                            <li class="social-icon-item"><a href="https://www.tiktok.com/@sosbifiunam" target="_blank" class="social-icon-link bi-tiktok bg-dorado"></a></li>
+                        </ul>
+                        <div class="copyright-wrap d-flex align-items-center justify-content-lg-end">
+                            <p class="copyright-text text-white-50 mb-0">Copyright © 2026 SOSBI UNAM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="var(--main-dorado)" fill-opacity="0.1" d="M0,224L34.3,192C68.6,160,137,96,206,90.7C274.3,85,343,139,411,144C480,149,549,107,617,122.7C685.7,139,754,213,823,240C891.4,267,960,245,1029,224C1097.1,203,1166,181,1234,160C1302.9,139,1371,117,1406,106.7L1440,96L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path></svg>
+        </footer>
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/animated-headline.js"></script>
+        <script src="js/modernizr.js"></script>
+        <script src="js/custom.js"></script>
+    </body>
+</html>
